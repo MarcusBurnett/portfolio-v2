@@ -37,6 +37,7 @@ h3 {
 
 p {
   margin: 0;
+  line-height: 170%;
 }
 
 a {

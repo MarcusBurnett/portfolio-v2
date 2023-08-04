@@ -12,7 +12,7 @@ import Button from '../components/Button';
 import Textarea from '../components/Textarea';
 import { promiseTimeout } from '../utilities';
 import { useTheme } from '../context/theme';
-import { small } from '../styles/breakpoints';
+import { medium, small } from '../styles/breakpoints';
 
 const Container = styled.div`
   display: flex;
@@ -28,11 +28,20 @@ const Container = styled.div`
     border-radius: ${({ borderRadius }) => borderRadius};
     font-family: ${({ font }) => font};
   }
+
+  @media screen and (max-width: ${medium}) {
+    padding-left: 10px;
+  }
 `;
+
 const InputContainer = styled.div`
   display: flex;
   width: 100%;
   gap: 20px;
+
+  @media screen and (max-width: ${medium}) {
+    flex-direction: column;
+  }
 `;
 
 const Background = styled.div`
@@ -49,7 +58,7 @@ const Background = styled.div`
 
   @media screen and (max-width: ${small}) {
     right: 20px;
-    width: 110%;
+    width: calc(100% - 1rem);
   }
 `;
 
@@ -70,7 +79,7 @@ const schema = Yup.object().shape({
 });
 
 const ReCaptchaContainer = styled.div`
-  /* display: none; */
+  display: none;
 `;
 
 function ContactForm() {
@@ -84,11 +93,9 @@ function ContactForm() {
       setSubmitting(true);
 
       const token = await Promise.race([
-        recaptchaRef.current.executeAsync(),
+        recaptchaRef.current?.executeAsync(),
         promiseTimeout(),
       ]);
-
-      console.log(token);
 
       if (token && token !== 'timed out') {
         await axios({
@@ -113,6 +120,7 @@ function ContactForm() {
       });
     } finally {
       setSubmitting(false);
+      await recaptchaRef.current.reset();
     }
   };
 

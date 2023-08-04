@@ -24,14 +24,14 @@ const themes = {
     title: 'Light',
     key: 'light',
     font: 'Comfortaa',
-    backgroundColor: '#F9F9F9',
+    backgroundColor: '#f8f8f8',
     accent: '#CD6B55',
     color: '#2B3652',
     storyColor: '#2B3652',
     selected: '#FFFFFF',
     contactIcons: '#F0F1F4',
-    secondary: '#F0F1F4',
-    boxShadow: '#f0f1f4',
+    secondary: '#eaedf0',
+    boxShadow: '#eaedf0',
     shadow: true,
     card: '#FFFFFF',
     borderRadius: {
@@ -42,7 +42,7 @@ const themes = {
       tab: '16px',
       tooltip: '8px',
       icon: '50%',
-      profilePicture: '30px',
+      medium: '30px',
     },
     border: {
       default: '1px solid transparent',
@@ -69,8 +69,8 @@ const themes = {
     input: {
       backgroundColor: '#FFFFFF',
       color: '#2B3652',
-      hover: '#F9F9F9',
-      border: '1px solid #F0F1F4',
+      hover: '#f8f8f8',
+      border: '1px solid #eaedf0',
       focusBorder: '1px solid #2B3652',
       validBorder: '1px solid #53A53F',
       errorBorder: '1px solid #C74747',
@@ -94,9 +94,9 @@ const themes = {
     selected: '#292C2E',
     secondary: '#242627',
     contactIcons: '#353739',
-    boxShadow: '#18191A',
+    boxShadow: '#161718',
     shadow: true,
-    card: '#202123',
+    card: '#232528',
     borderRadius: {
       default: '40px',
       small: '20px',
@@ -105,7 +105,7 @@ const themes = {
       tab: '16px',
       tooltip: '8px',
       icon: '50%',
-      profilePicture: '30px',
+      medium: '30px',
     },
     border: {
       default: '1px solid transparent',
@@ -176,7 +176,7 @@ const themes = {
       tab: 0,
       tooltip: 0,
       icon: 0,
-      profilePicture: 0,
+      medium: 0,
     },
     button: {
       primary: {
@@ -240,7 +240,7 @@ const themes = {
       tab: '6px',
       tooltip: '6px',
       icon: '6px',
-      profilePicture: '6px',
+      medium: '6px',
     },
     button: {
       primary: {
@@ -253,7 +253,7 @@ const themes = {
       secondary: {
         backgroundColor: '#FFFFFF',
         color: '#121212',
-        hover: '#F9F9F9',
+        hover: '#F5F5F5',
         focusBorder: '1px solid #E9E9E9',
         borderRadius: '6px',
       },
@@ -266,7 +266,7 @@ const themes = {
     input: {
       backgroundColor: '#FFFFFF',
       color: '#121212',
-      hover: '#F9F9F9',
+      hover: '#F5F5F5',
       border: '1px solid #DFDFDF',
       focusBorder: '1px solid #A1A1A1',
       validBorder: '1px solid #53A53F',
@@ -304,7 +304,7 @@ const themes = {
       tab: 0,
       tooltip: 0,
       icon: 0,
-      profilePicture: 0,
+      medium: 0,
     },
     button: {
       primary: {
@@ -368,7 +368,7 @@ const themes = {
       tab: '10px',
       tooltip: '10px',
       icon: '10px',
-      profilePicture: '10px',
+      medium: '10px',
     },
     button: {
       primary: {
@@ -425,7 +425,7 @@ function ThemeProvider(props) {
 
   useLayoutEffect(() => {
     document.body.style.backgroundColor =
-      themes[theme]?.backgroundColor ?? '#F9F9F9';
+      themes[theme]?.backgroundColor ?? '#F5F5F5';
   }, [theme]);
 
   const toggleTheme = useCallback((newTheme) => {

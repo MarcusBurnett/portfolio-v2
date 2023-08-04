@@ -39,7 +39,8 @@ const StyledButton = styled.button`
 `;
 
 const Children = styled.div`
-  visibility: ${({ loading }) => (loading ? 'hidden' : 'auto')};
+  visibility: ${({ loading }) => (loading ? 'hidden' : 'visible')};
+  display: contents;
 `;
 
 function Button({

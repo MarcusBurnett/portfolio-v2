@@ -5,7 +5,6 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { fadeIn } from '../keyframes';
 import { medium } from '../styles/breakpoints';
 import routes from '../data/routes';
-import Project from './Experience/Project';
 
 const StyledContent = styled.div`
   display: flex;
@@ -60,28 +59,15 @@ const StyledContent = styled.div`
 function Pages() {
   const location = useLocation();
 
-  if (
-    location.pathname === '/' ||
-    !routes.find((route) => location.pathname.includes(route.path))
-  )
-    return <Navigate replace to="/about-me" />;
-
   return (
     <StyledContent>
       <TransitionGroup component={null}>
-        <CSSTransition key={location.pathname} classNames="page" timeout={500}>
+        <CSSTransition key={location.key} classNames="page" timeout={500}>
           <Routes location={location}>
-            {routes.map(({ path, Component, nested }) => (
-              <Route key={path} path={path} element={<Component />}>
-                {nested?.map(({ path: nestedPath }) => (
-                  <Route
-                    key={nestedPath}
-                    path={nestedPath}
-                    element={<Project />}
-                  />
-                ))}
-              </Route>
+            {routes.map(({ path, Component }) => (
+              <Route path={path} element={<Component />} />
             ))}
+            <Route path="*" element={<Navigate to="/about-me" />} />
           </Routes>
         </CSSTransition>
       </TransitionGroup>

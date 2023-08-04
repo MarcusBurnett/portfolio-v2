@@ -284,9 +284,7 @@ function Header({ collapsed }) {
         $collapsed={collapsed}
         src={profilePicture}
         borderRadius={
-          collapsed
-            ? theme.borderRadius.small
-            : theme.borderRadius.profilePicture
+          collapsed ? theme.borderRadius.small : theme.borderRadius.medium
         }
       />
       <HeaderContent $collapsed={collapsed}>

@@ -9,6 +9,7 @@ import phoneIcon from './Phone.svg';
 import linkedInIcon from './LinkedIn.svg';
 import paletteIcon from './Palette.svg';
 import checkIcon from './Check.svg';
+import externalLinkIcon from './ExternalLink.svg';
 
 export default {
   profileIcon,
@@ -22,4 +23,5 @@ export default {
   linkedInIcon,
   paletteIcon,
   checkIcon,
+  externalLinkIcon,
 };

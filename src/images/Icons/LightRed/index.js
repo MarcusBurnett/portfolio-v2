@@ -8,6 +8,7 @@ import downloadCVIcon from './DownloadCV.svg';
 import phoneIcon from './Phone.svg';
 import linkedInIcon from './LinkedIn.svg';
 import paletteIcon from './Palette.svg';
+import externalLinkIcon from './ExternalLink.svg';
 
 export default {
   profileIcon,
@@ -20,4 +21,5 @@ export default {
   phoneIcon,
   linkedInIcon,
   paletteIcon,
+  externalLinkIcon,
 };

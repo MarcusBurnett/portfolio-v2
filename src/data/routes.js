@@ -3,7 +3,6 @@ import Skills from '../pages/Skills';
 import Contact from '../pages/Contact';
 import AboutMe from '../pages/AboutMe';
 import Theme from '../pages/Theme';
-import experience from './projects';
 import Experience from '../pages/Experience';
 
 export default [
@@ -17,7 +16,6 @@ export default [
   {
     path: '/experience',
     Component: Experience,
-    nested: experience,
     name: 'Experience',
     nodeRef: createRef(),
   },

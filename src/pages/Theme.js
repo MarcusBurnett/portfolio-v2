@@ -66,6 +66,7 @@ const Background = styled.div`
   right: 40px;
   bottom: 0px;
   border-radius: ${({ borderRadius }) => borderRadius};
+  border: ${({ border }) => border};
   z-index: -1;
   transition: background-color 0.4s ease;
 
@@ -90,6 +91,7 @@ function Theme() {
         <Background
           borderRadius={theme.borderRadius.default}
           backgroundColor={theme.boxShadow}
+          border={theme.border.background}
         />
         {themes?.map((t) => (
           <ThemeTile theme={t} selected={t.title === theme.title} />
