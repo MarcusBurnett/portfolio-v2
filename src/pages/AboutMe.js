@@ -6,6 +6,7 @@ import Countdown from '../components/Countdown';
 // import Spacer from '../components/Spacer';
 import Story from '../components/Story';
 import Gallery from '../components/Gallery';
+import { fadeInAndSlideUp } from '../keyframes';
 
 const Container = styled.div`
   width: 100%;
@@ -33,6 +34,8 @@ const Left = styled.div`
   gap: 20px;
   padding: 40px 40px 0 40px;
   width: 49%;
+  opacity: 0;
+  animation: 0.6s ${fadeInAndSlideUp} 0.4s ease forwards;
 
   @media screen and (max-width: ${large}) {
     width: 100%;
@@ -111,6 +114,8 @@ const Text = styled.span`
 
 const Overview = styled(Card)`
   width: 100%;
+  opacity: 0;
+  animation: 0.8s ${fadeInAndSlideUp} 0.6s ease forwards;
 
   .card {
     width: 100%;

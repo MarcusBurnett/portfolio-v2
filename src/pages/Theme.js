@@ -3,6 +3,7 @@ import styled from 'styled-components/macro';
 import { medium, small } from '../styles/breakpoints';
 import { useTheme } from '../context/theme';
 import ThemeTile from '../components/ThemeTile';
+import { fadeInAndSlideUp } from '../keyframes';
 
 const Container = styled.div`
   width: 100%;
@@ -29,6 +30,8 @@ const TitleContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
+  opacity: 0;
+  animation: 0.6s ${fadeInAndSlideUp} 0.4s ease forwards;
 `;
 
 const Title = styled.h1`
@@ -55,6 +58,8 @@ const Themes = styled.div`
   width: 100%;
   position: relative;
   flex-wrap: wrap;
+  opacity: 0;
+  animation: 1s ${fadeInAndSlideUp} 0.6s ease forwards;
 `;
 
 const Background = styled.div`
@@ -69,6 +74,8 @@ const Background = styled.div`
   border: ${({ border }) => border};
   z-index: -1;
   transition: background-color 0.4s ease;
+  opacity: 0;
+  animation: 1.8s ${fadeInAndSlideUp} 0.6s ease forwards;
 
   @media screen and (max-width: ${small}) {
     right: 20px;
@@ -83,9 +90,7 @@ function Theme() {
     <Container>
       <TitleContainer>
         <Title>Theme</Title>
-        <Subtitle>
-          Not a fan of the default style? Choose the one you prefer
-        </Subtitle>
+        <Subtitle>Choose your preferred style.</Subtitle>
       </TitleContainer>
       <Themes>
         <Background

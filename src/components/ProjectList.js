@@ -93,8 +93,6 @@ const Background = styled.div`
 export default function ProjectList({ currentProject, setCurrentProject }) {
   const { theme } = useTheme();
 
-  console.log(theme.borderRadius.medium);
-
   return (
     <StyledProjectList>
       <Background

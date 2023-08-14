@@ -13,12 +13,15 @@ import Textarea from '../components/Textarea';
 import { promiseTimeout } from '../utilities';
 import { useTheme } from '../context/theme';
 import { medium, small } from '../styles/breakpoints';
+import { fadeInAndSlideUp } from '../keyframes';
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
   position: relative;
+  opacity: 0;
+  animation: 0.6s ${fadeInAndSlideUp} 0.8s ease forwards;
 
   .Toastify__toast {
     border-radius: ${({ borderRadius }) => borderRadius};
@@ -55,6 +58,8 @@ const Background = styled.div`
   z-index: -1;
   transition: background-color 0.4s ease;
   height: calc(100% - 2rem);
+  opacity: 0;
+  animation: 1.8s ${fadeInAndSlideUp} 0.6s ease forwards;
 
   @media screen and (max-width: ${small}) {
     right: 20px;
@@ -79,7 +84,8 @@ const schema = Yup.object().shape({
 });
 
 const ReCaptchaContainer = styled.div`
-  display: none;
+  /* display: none; */
+  /* position: absolute; */
 `;
 
 function ContactForm() {
@@ -186,20 +192,20 @@ function ContactForm() {
         error={touched.message && errors.message}
         valid={values.message && !errors.message}
       />
+      {process.env.REACT_APP_RECAPTCHA_KEY && (
+        <ReCaptchaContainer>
+          <ReCAPTCHA
+            ref={recaptchaRef}
+            // size="invisible"
+            sitekey={process.env.REACT_APP_RECAPTCHA_KEY}
+          />
+        </ReCaptchaContainer>
+      )}
       <ButtonContainer>
         <Button onClick={handleSubmit} loading={submitting} disabled={!isValid}>
           Send Message
         </Button>
       </ButtonContainer>
-      {process.env.REACT_APP_RECAPTCHA_KEY && (
-        <ReCaptchaContainer>
-          <ReCAPTCHA
-            ref={recaptchaRef}
-            size="invisible"
-            sitekey={process.env.REACT_APP_RECAPTCHA_KEY}
-          />
-        </ReCaptchaContainer>
-      )}
       <ToastContainer />
     </Container>
   );

@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useRef, useState } from 'react';
 import { styled } from 'styled-components';
 import { useTheme } from '../context/theme';
 import { large, medium } from '../styles/breakpoints';
+import { fadeInAndSlideLeft } from '../keyframes';
 
 const Timeline = styled.div`
   display: flex;
@@ -13,6 +14,8 @@ const Timeline = styled.div`
   /* overflow: hidden; */
   position: absolute;
   right: 20px;
+  opacity: 0;
+  animation: 0.8s ${fadeInAndSlideLeft} 1.6s ease forwards;
 
   @media screen and (max-width: ${large}) {
     overflow: hidden;

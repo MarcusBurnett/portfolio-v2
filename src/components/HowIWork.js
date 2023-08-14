@@ -4,6 +4,7 @@ import { useTheme } from '../context/theme';
 import Card from './Card';
 import CollapseIcon from './CollapseIcon';
 import { small } from '../styles/breakpoints';
+import { fadeInAndSlideLeft } from '../keyframes';
 
 const Container = styled.div`
   display: flex;
@@ -11,7 +12,12 @@ const Container = styled.div`
   gap: 15px;
   position: relative;
   margin: 60px 0 20px 0;
-  padding: 0 0 0 20px;
+  opacity: 0;
+  animation: 0.8s ${fadeInAndSlideLeft} 0.8s ease forwards;
+
+  @media screen and (max-width: ${small}) {
+    padding: 0 0 0 20px;
+  }
 `;
 
 const Data = styled.div`

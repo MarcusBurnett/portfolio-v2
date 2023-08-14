@@ -9,6 +9,7 @@ import { useScrollPosition, useWindowDimensions } from '../hooks';
 import { small } from '../styles/breakpoints';
 import NavbarMenuIcon from './navigation/NavbarMenuIcon';
 import { useTheme } from '../context/theme';
+import { fadeInAndSlideRight } from '../keyframes';
 
 const StyledNavbar = styled.nav`
   padding: ${({ $collapsed }) =>
@@ -20,6 +21,8 @@ const StyledNavbar = styled.nav`
   z-index: 2;
   display: flex;
   transition: all 0.4s ease;
+  opacity: 0;
+  animation: 1.2s ${fadeInAndSlideRight} ease forwards;
 
   @media screen and (max-width: ${small}) {
     padding: ${({ $scrollPosition }) =>
@@ -30,6 +33,8 @@ const StyledNavbar = styled.nav`
     position: fixed;
     z-index: 20;
     background-color: ${({ $backgroundColor }) => $backgroundColor};
+    opacity: 1;
+    animation: none;
   }
 `;
 

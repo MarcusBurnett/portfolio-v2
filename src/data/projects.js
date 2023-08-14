@@ -38,13 +38,13 @@ export default [
       whiteout: sendcloudLogoBlue,
       blackout: sendcloudLogoWhite,
       mono: sendcloudLogoBlue,
-      mint: sendcloudLogoWhite,
+      mint: sendcloudLogoBlue,
     },
     website: 'https://www.sendcloud.com',
     downloadLinks: [
       {
         store: 'apple',
-        url: 'https://apps.apple.com/gb/app/airtime-rewards-earn-rewards/id975840117',
+        url: 'ht\tps://apps.apple.com/gb/app/airtime-rewards-earn-rewards/id975840117',
       },
       {
         store: 'google',

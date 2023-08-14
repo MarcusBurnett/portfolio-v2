@@ -13,6 +13,7 @@ import Spacer from '../../components/Spacer';
 import HowIWork from '../../components/HowIWork';
 import ProjectList from '../../components/ProjectList';
 import Project from './Project';
+import { fadeInAndSlideUp } from '../../keyframes';
 
 // const Container = styled.div`
 //   width: 100%;
@@ -42,16 +43,14 @@ const Container = styled.div`
   padding: 40px 0 4px 40px;
   gap: 20px;
   position: relative;
-  /* max-width: 850px; */
-  /* height: fit-content; */
 
   @media screen and (max-width: ${medium}) {
     min-height: 100vh;
-    padding: 70px 0 40px;
+    padding: 40px 20px;
   }
 
   @media screen and (max-width: ${small}) {
-    margin-bottom: 100px;
+    /* margin-bottom: 20px; */
     gap: 40px;
     padding-top: 12rem;
   }
@@ -61,13 +60,20 @@ const ProjectContainer = styled.div`
   flex: 1;
   height: 100%;
   position: relative;
+  opacity: 0;
+  animation: 0.8s ${fadeInAndSlideUp} 1s ease forwards;
 `;
 
 const TitleContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
-  padding: 20px 40px 20px 20px;
+  opacity: 0;
+  animation: 0.6s ${fadeInAndSlideUp} 0.4s ease forwards;
+
+  @media screen and (max-width: ${small}) {
+    padding: 20px 40px 20px 20px;
+  }
 `;
 
 const Title = styled.h1`
@@ -90,8 +96,9 @@ const Subtitle = styled.h2`
 
 const QuoteCard = styled(Card)`
   margin-right: 60px;
-  padding: 0 20px;
   max-width: 1000px;
+  opacity: 0;
+  animation: 0.6s ${fadeInAndSlideUp} 0.6s ease forwards;
 
   .card.quote {
     box-shadow: ${({ boxShadow }) => `30px 60px 0px 0px ${boxShadow}`};
@@ -102,13 +109,14 @@ const QuoteCard = styled(Card)`
       line-height: 3rem;
     }
 
-    @media screen and (max-width: ${small}) {
+    @media screen and (max-width: ${medium}) {
       box-shadow: ${({ boxShadow }) => `20px 80px 0px 0px ${boxShadow}`};
     }
   }
 
   @media screen and (max-width: ${small}) {
     margin-right: 10px;
+    padding: 0 20px;
   }
 `;
 
@@ -130,8 +138,9 @@ const Quoted = styled.a`
   width: 90%;
   text-align: right;
   padding-left: 20px;
+  color: ${({ color }) => color};
 
-  @media screen and (max-width: ${small}) {
+  @media screen and (max-width: ${medium}) {
     bottom: -6rem;
     right: 1rem;
   }
@@ -139,9 +148,9 @@ const Quoted = styled.a`
 
 const H3 = styled.h3`
   font-size: 2rem;
-  margin: 0 20px;
 
   @media screen and (max-width: ${small}) {
+    margin: 0 20px;
     font-size: 2.2rem;
   }
 `;
@@ -167,6 +176,7 @@ function Experience() {
           target="_blank"
           rel="noopener noreferrer"
           href="https://uk.linkedin.com/in/apamphilon"
+          color={theme.storyColor}
         >
           Alex Pamphilon - FE Team Lead, Airtime Rewards
           <ExternalLinkIcon

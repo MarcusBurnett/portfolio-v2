@@ -4,6 +4,7 @@ import Card from './Card';
 import friends from '../images/Gallery/Friends.png';
 import SlideIndicator from './SlideIndicator';
 import { small } from '../styles/breakpoints';
+import { fadeInAndSlideUp } from '../keyframes';
 
 const Container = styled.div`
   position: relative;
@@ -14,6 +15,8 @@ const Container = styled.div`
   flex: 1;
   padding-bottom: 20px;
   max-height: 400px;
+  opacity: 0;
+  animation: 0.8s ${fadeInAndSlideUp} 0.8s ease forwards;
 `;
 
 const StyledGallery = styled(Card)`

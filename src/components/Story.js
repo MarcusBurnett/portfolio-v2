@@ -5,6 +5,7 @@ import timeline from '../data/timeline';
 import TimelineItem from './TimelineItem';
 import TimelineLines from './TimelineLines';
 import { large, medium, small, xlarge } from '../styles/breakpoints';
+import { fadeInAndSlideLeft, fadeInAndSlideUp } from '../keyframes';
 
 const StyledStory = styled.div`
   flex: 1;
@@ -14,6 +15,8 @@ const StyledStory = styled.div`
   flex-direction: column;
   align-items: flex-end;
   gap: 20px;
+  opacity: 0;
+  animation: 0.8s ${fadeInAndSlideLeft} 1s ease forwards;
 
   @media screen and (max-width: ${large}) {
     flex: auto;
@@ -67,6 +70,8 @@ const Background = styled.div`
   border: ${({ border }) => border};
   z-index: -1;
   transition: transform 0.2s ease;
+  opacity: 0;
+  animation: 0.6s ${fadeInAndSlideUp} 1.4s ease forwards;
 
   @media screen and (max-width: ${xlarge}) {
     width: 30vw;

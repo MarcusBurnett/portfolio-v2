@@ -13,8 +13,8 @@ const StyledProject = styled.div`
   margin-bottom: 40px;
 
   @media screen and (max-width: ${medium}) {
-    padding: 0 10px;
-    margin-bottom: 140px;
+    padding: 0 20px;
+    margin-bottom: 100px;
   }
 `;
 
@@ -23,6 +23,7 @@ const Container = styled.div`
   width: 100%;
   gap: 40px;
   position: relative;
+  flex-wrap: wrap;
 
   @media screen and (max-width: ${medium}) {
     flex-direction: column;
@@ -37,6 +38,7 @@ const Section = styled.div`
   position: relative;
   gap: 20px;
   height: fit-content;
+  flex-wrap: wrap;
 `;
 
 const Logo = styled.img`
@@ -46,13 +48,22 @@ const Logo = styled.img`
 
 const Image = styled.img`
   width: 100%;
+  min-height: 30rem;
+  min-width: 40rem;
   max-height: 50rem;
   object-fit: contain;
+  transition: transform 0.5s ease;
+  transform-origin: 60% 30%;
+
+  &:hover {
+    transform: perspective(20px) rotateY(0.2deg) rotateX(-0.1deg) scale(1.05);
+  }
 `;
 
 const Background = styled.div`
   background-color: ${({ backgroundColor }) => backgroundColor};
   width: 100%;
+  max-width: 40rem;
   min-width: 100%;
   position: absolute;
   left: -2rem;
@@ -78,6 +89,11 @@ const ToolImage = styled.img`
   min-width: 5rem;
   object-fit: cover;
   border-radius: ${({ borderRadius }) => borderRadius};
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 
   @media screen and (max-width: ${medium}) {
     min-width: 4.5rem;
@@ -128,7 +144,8 @@ const List = styled.ul`
 `;
 
 const Description = styled.p`
-  max-width: 40rem;
+  margin-right: 2rem;
+  max-width: 75rem;
   line-height: 200%;
   margin-bottom: 10px;
 
@@ -154,6 +171,7 @@ const Achievements = styled(Card)`
 const Lessons = styled.div`
   padding: 20px;
   margin: 40px 40px 0 0;
+  color: ${({ color }) => color};
 
   @media screen and (max-width: ${medium}) {
     margin: 0 40px 0 0;
@@ -213,7 +231,7 @@ export default function Project({ project }) {
           </Achievements>
         </Section>
         <Section>
-          <Lessons>
+          <Lessons color={theme.storyColor}>
             <H3>My biggest lesson</H3>
             <Spacer size="s" />
             {project.lesson}

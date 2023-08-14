@@ -24,8 +24,6 @@ const StyledCard = styled.div`
 function Card({ children, className, cardClassName, onClick }) {
   const { theme } = useTheme();
 
-  // console.log(theme);
-
   return (
     <Container className={className}>
       <StyledCard

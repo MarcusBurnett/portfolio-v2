@@ -29,7 +29,7 @@ const StyledContent = styled.div`
 
   .page-enter {
     opacity: 0;
-    transform: translateY(-100px);
+    transform: translateY(-20px);
   }
 
   .page-enter-active {
@@ -48,7 +48,7 @@ const StyledContent = styled.div`
 
   .page-exit-active {
     opacity: 0;
-    transform: translateY(-100px);
+    transform: translateY(-20px);
     transition: opacity 500ms, transform 500ms;
     position: absolute;
     left: 0;
