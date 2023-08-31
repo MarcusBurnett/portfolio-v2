@@ -29,11 +29,12 @@ const Image = styled.img`
   height: 18vw;
   max-height: 300px;
   object-fit: cover;
-  border-radius: ${({ borderRadius }) => borderRadius};
+  border-radius: ${({ $borderRadius }) => $borderRadius};
   margin-right: -50px;
   position: relative;
   transition: transform 0.5s ease;
   transform-origin: 80%;
+  transform: perspective(60px) rotateY(-0.01deg);
 
   &:hover {
     transform: perspective(60px) rotateY(-0.8deg);
@@ -59,10 +60,11 @@ const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 20px;
+  gap: 10px;
   padding: 20px;
   p,
-  h3 {
+  h3,
+  h4 {
     text-align: right;
     color: ${({ color }) => color};
   }
@@ -71,10 +73,19 @@ const ContentContainer = styled.div`
     font-size: 1.8rem;
   }
 
+  h4 {
+    font-size: 1.6rem;
+    font-weight: 300;
+  }
+
   @media screen and (max-width: ${large}) {
     padding-right: 40px;
     h3 {
       font-size: 2.2rem;
+    }
+
+    h3 {
+      font-size: 2rem;
     }
 
     p {
@@ -93,7 +104,9 @@ export default function TimelineItem({ item, index, $scrollY, setPosition }) {
 
   useEffect(() => {
     if (isMobile) {
-      setTransform({ scale: 1 });
+      if (transform.scale !== 1) {
+        setTransform({ scale: 1 });
+      }
     } else {
       const itemPosition = ref.current?.getBoundingClientRect().y;
       let scale = 0.5;
@@ -128,7 +141,7 @@ export default function TimelineItem({ item, index, $scrollY, setPosition }) {
       // if (transform.scale !== scale.toFixed(3))
       setTransform({ scale: scale.toFixed(3) });
     }
-  }, [height, $scrollY, setPosition, index, isMobile]);
+  }, [height, $scrollY, setPosition, index, isMobile, transform.scale]);
 
   return isMobile ? (
     <Item
@@ -140,9 +153,10 @@ export default function TimelineItem({ item, index, $scrollY, setPosition }) {
       <Image
         src={item.image}
         alt={item.title}
-        borderRadius={theme.borderRadius.default}
+        $borderRadius={theme.borderRadius.default}
       />
       <ContentContainer color={theme.storyColor}>
+        <h4>{item.year}</h4>
         <h3>{item.title}</h3>
         <p>{item.content}</p>
       </ContentContainer>
@@ -157,9 +171,10 @@ export default function TimelineItem({ item, index, $scrollY, setPosition }) {
       <Image
         src={item.image}
         alt={item.title}
-        borderRadius={theme.borderRadius.default}
+        $borderRadius={theme.borderRadius.default}
       />
       <ContentContainer color={theme.storyColor}>
+        <h4>{item.year}</h4>
         <h3>{item.title}</h3>
         <p>{item.content}</p>
       </ContentContainer>

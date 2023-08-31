@@ -146,6 +146,7 @@ const themes = {
       borderRadius: '20px',
       errorColor: '#C74747',
     },
+    imageFilter: 'saturate(60%)',
   },
   blackout: {
     title: 'Blackout',
@@ -210,6 +211,7 @@ const themes = {
       borderRadius: 0,
       errorColor: '#C74747',
     },
+    imageFilter: 'grayscale(80%)',
   },
   whiteout: {
     title: 'Whiteout',
@@ -274,6 +276,7 @@ const themes = {
       borderRadius: '6px',
       errorColor: '#C74747',
     },
+    imageFilter: 'saturate(40%)',
   },
   mono: {
     title: 'Mono',
@@ -338,6 +341,7 @@ const themes = {
       borderRadius: 0,
       errorColor: '#C74747',
     },
+    imageFilter: 'grayscale(90%)',
   },
   mint: {
     title: 'Mint',

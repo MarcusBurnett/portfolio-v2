@@ -3,20 +3,27 @@ import { styled } from 'styled-components';
 import { useTheme } from '../context/theme';
 import Card from './Card';
 import CollapseIcon from './CollapseIcon';
-import { small } from '../styles/breakpoints';
+import { medium, small } from '../styles/breakpoints';
 import { fadeInAndSlideLeft } from '../keyframes';
+import { useWindowDimensions } from '../hooks';
+import howIWork from '../data/howIWork';
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
   position: relative;
-  margin: 60px 0 20px 0;
+  margin: 70px 0 20px 0;
   opacity: 0;
-  animation: 0.8s ${fadeInAndSlideLeft} 0.8s ease forwards;
+  animation: 0.8s ${fadeInAndSlideLeft} 0.6s ease forwards;
 
   @media screen and (max-width: ${small}) {
-    padding: 0 0 0 20px;
+    animation: 0.4s ${fadeInAndSlideLeft} 0.4s ease forwards;
+  }
+
+  ul {
+    list-style: disc;
+    margin: 1rem 0 0 1rem;
   }
 `;
 
@@ -39,25 +46,33 @@ const Data = styled.div`
 `;
 
 const Background = styled.div`
-  background-color: ${({ backgroundColor }) => backgroundColor};
-  width: ${({ width }) => `${width}rem`};
+  background-color: ${({ $backgroundColor }) => $backgroundColor};
+  width: ${({ width }) => `${width}px`};
   min-width: 100%;
   position: absolute;
   left: 0;
   top: 4rem;
-  border-radius: ${({ borderRadius }) => borderRadius};
+  border-radius: ${({ $borderRadius }) => $borderRadius};
   border: ${({ border }) => border};
   z-index: -1;
   transition: background-color 0.4s ease;
   height: calc(100% - 4rem);
+
+  @media screen and (max-width: ${small}) {
+    left: 1rem;
+  }
 `;
 
 const Step = styled(Card)`
   .card {
-    width: 45rem;
+    width: 550px;
     max-width: 90vw;
     box-shadow: none;
     gap: 5px;
+
+    @media screen and (max-width: ${small}) {
+      padding: 2.5rem;
+    }
   }
 `;
 
@@ -65,10 +80,19 @@ const StepTitle = styled.h5`
   width: 100%;
   font-size: 1.6rem;
   font-weight: 700;
+
+  @media screen and (max-width: ${small}) {
+    font-size: 1.8rem;
+  }
 `;
 
 const Content = styled.div`
   padding-left: 15px;
+
+  @media screen and (max-width: ${small}) {
+    padding-left: 0;
+    font-size: 1.4rem;
+  }
 `;
 
 const SectionHeader = styled.div`
@@ -79,6 +103,10 @@ const SectionHeader = styled.div`
   height: 100%;
   cursor: pointer;
   letter-spacing: 1px;
+
+  @media screen and (max-width: ${small}) {
+    width: 2.5rem;
+  }
 
   &:hover {
     h5 {
@@ -92,23 +120,27 @@ const SectionHeader = styled.div`
     text-transform: uppercase;
     transform-origin: left;
     font-weight: 400;
+    color: ${({ color }) => color};
+
+    @media screen and (max-width: ${small}) {
+      font-size: 1.8rem;
+    }
   }
 `;
 
 const Steps = styled.div`
   display: flex;
-  /* opacity: ${({ collapsed }) => (collapsed ? 0 : 1)}; */
   gap: 2rem;
   overflow: hidden;
-  height: 100%;
+  height: 100%; */
 `;
 
 const Section = styled.div`
   display: flex;
-  min-width: ${({ collapsed, width }) =>
-    collapsed ? '2.2rem' : `${width}rem`};
-  width: ${({ collapsed, width }) => (collapsed ? '2.2rem' : `${width}rem`)};
-  transition: all 0.6s ease;
+  min-width: ${({ $collapsed, width }) =>
+    $collapsed ? '2.2rem' : `${width}px`};
+  width: ${({ $collapsed, width }) => ($collapsed ? '2.2rem' : `${width}px`)};
+  transition: all 1s ease-in-out;
   gap: 20px;
   position: relative;
   align-items: flex-end;
@@ -120,100 +152,15 @@ const Title = styled.h3`
 
   @media screen and (max-width: ${small}) {
     font-size: 2.2rem;
+    margin-left: 20px;
   }
 `;
 
 export default function HowIWork() {
   const { theme } = useTheme();
-  const [data, setData] = useState([
-    {
-      name: 'Research',
-      collapsed: false,
-      numberOfSteps: 2,
-      steps: [
-        {
-          name: '1. Initial Analysis',
-          content: (
-            <span>
-              I start by clarifying what we know and don’t know, which helps to
-              understand both scope and initial direction. I do this by;
-              <ul>
-                <li>Analysing existing research and data</li>
-                <li>Discussing with experienced colleagues</li>
-              </ul>
-            </span>
-          ),
-        },
-        {
-          name: '2. User Journey Mapping',
-          content: (
-            <span>
-              Next, I plot out the full user journey, including all
-              possibilities and interactions, both physical and digital.
-            </span>
-          ),
-        },
-      ],
-    },
-    {
-      name: 'Design',
-      collapsed: false,
-      numberOfSteps: 2,
-      steps: [
-        {
-          name: '1. Initial Analysis',
-          content: (
-            <span>
-              I start by clarifying what we know and don’t know, which helps to
-              understand both scope and initial direction. I do this by;
-              <ul>
-                <li>Analysing existing research and data</li>
-                <li>Discussing with experienced colleagues</li>
-              </ul>
-            </span>
-          ),
-        },
-        {
-          name: '2. User Journey Mapping',
-          content: (
-            <span>
-              Next, I plot out the full user journey, including all
-              possibilities and interactions, both physical and digital.
-            </span>
-          ),
-        },
-      ],
-    },
-    {
-      name: 'Develop',
-      collapsed: false,
-      numberOfSteps: 2,
-      steps: [
-        {
-          name: '1. Initial Analysis',
-          content: (
-            <span>
-              I start by clarifying what we know and don’t know, which helps to
-              understand both scope and initial direction. I do this by;
-              <ul>
-                <li>Analysing existing research and data</li>
-                <li>Discussing with experienced colleagues</li>
-              </ul>
-            </span>
-          ),
-        },
-        {
-          name: '2. User Journey Mapping',
-          content: (
-            <span>
-              Next, I plot out the full user journey, including all
-              possibilities and interactions, both physical and digital.
-            </span>
-          ),
-        },
-      ],
-    },
-  ]);
+  const { width } = useWindowDimensions();
+  const isMobile = width <= Number.parseInt(medium.replace('px', ''), 10);
+  const [data, setData] = useState(howIWork);
 
   const toggleCollapse = (section) => {
     setData((prev) => {
@@ -226,8 +173,8 @@ export default function HowIWork() {
   };
 
   const calculateBackgroundWidth = () => {
-    const stepWidth = 46;
-    const gap = 2;
+    const stepWidth = isMobile ? Math.min(550, width * 0.95) : 550;
+    const gap = 25;
 
     const sectionWidths = data.map((section) =>
       section.collapsed ? 2.2 : section.steps.length * (stepWidth + gap)
@@ -238,31 +185,41 @@ export default function HowIWork() {
     }, 0);
   };
 
+  const calculateSectionWidth = (numberOfSteps) => {
+    const stepWidth = isMobile ? Math.min(550, width * 0.95) : 550;
+
+    const gap = 25;
+
+    return numberOfSteps * (stepWidth + gap);
+  };
+
   return (
     <Container>
       <Title>How I Work</Title>
       <Data>
         <Background
-          borderRadius={theme.borderRadius.default}
-          backgroundColor={theme.boxShadow}
+          $borderRadius={theme.borderRadius.default}
+          $backgroundColor={theme.boxShadow}
           width={calculateBackgroundWidth()}
           border={theme.border.background}
         />
         {data.map((section) => (
           <Section
-            width={section.steps.length * (46 + 2.2)}
-            collapsed={section.collapsed}
+            width={calculateSectionWidth(section.steps.length)}
+            $collapsed={section.collapsed}
+            key={section.name}
           >
             <SectionHeader
-              collapsed={section.collapsed}
+              $collapsed={section.collapsed}
               onClick={() => toggleCollapse(section.name)}
+              color={theme.storyColor}
             >
               <CollapseIcon collapsed={section.collapsed} />
               <h5>{section.name}</h5>
             </SectionHeader>
-            <Steps collapsed={section.collapsed}>
+            <Steps $collapsed={section.collapsed}>
               {section.steps.map((step) => (
-                <Step>
+                <Step key={step.name}>
                   <StepTitle>{step.name}</StepTitle>
                   <Content>{step.content}</Content>
                 </Step>

@@ -11,7 +11,7 @@ const StyledButton = styled.button`
   min-height: ${({ small }) => (small ? '3rem' : '4.4rem')};
   width: ${({ small }) => (small ? 'auto' : '100%')};
   padding: 0 2.5rem;
-  border-radius: ${({ borderRadius }) => borderRadius};
+  border-radius: ${({ $borderRadius }) => $borderRadius};
   transition: all 0.3s ease;
   cursor: pointer;
   opacity: ${({ disabled }) => (disabled ? 0.6 : 1)};
@@ -39,7 +39,7 @@ const StyledButton = styled.button`
 `;
 
 const Children = styled.div`
-  visibility: ${({ loading }) => (loading ? 'hidden' : 'visible')};
+  visibility: ${({ $isLoading }) => ($isLoading ? 'hidden' : 'visible')};
   display: contents;
 `;
 
@@ -77,7 +77,7 @@ function Button({
           ? button.secondary.focusBorderColor
           : button.primary.focusBorderColor
       }
-      borderRadius={
+      $borderRadius={
         secondary ? button.secondary.borderRadius : button.primary.borderRadius
       }
       border={secondary ? theme.border.default : theme.border.default}
@@ -86,7 +86,7 @@ function Button({
       className={className}
     >
       {loading && <Spinner />}
-      <Children loading={loading}>{children}</Children>
+      <Children $isLoading={loading}>{children}</Children>
     </StyledButton>
   );
 }

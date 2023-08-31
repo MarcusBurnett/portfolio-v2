@@ -19,13 +19,13 @@ const StyledTabs = styled.ul`
   flex-direction: column;
   background-color: ${({ $backgroundColor }) => $backgroundColor};
   padding: 10px;
-  border-radius: ${({ borderRadius }) => borderRadius};
+  border-radius: ${({ $borderRadius }) => $borderRadius};
   border: ${({ border }) => border};
   box-shadow: 0px 4px 4px 0px #0000000d;
   box-sizing: border-box;
   transition: all 0.4s ease;
   z-index: 10;
-  box-shadow: ${({ shadow }) => !shadow && 'none'};
+  box-shadow: ${({ $displayShadow }) => !$displayShadow && 'none'};
 
   @media screen and (max-width: ${small}) {
     width: 100%;
@@ -52,7 +52,7 @@ const Indicator = styled.div`
   top: ${({ $collapsed }) => ($collapsed ? '12px' : '0')};
   bottom: ${({ $collapsed }) => ($collapsed ? '12px' : '0')};
   background-color: ${({ $backgroundColor }) => $backgroundColor};
-  border-radius: ${({ borderRadius }) => borderRadius};
+  border-radius: ${({ $borderRadius }) => $borderRadius};
   transition: all 0.4s ease;
 
   @media screen and (max-width: ${small}) {
@@ -115,11 +115,11 @@ const StyledCard = styled(Card)`
   .card {
     display: flex;
     background-color: ${({ $backgroundColor }) => $backgroundColor};
-    box-shadow: ${({ selected, shadow }) =>
-      selected && shadow ? '0px 4px 8px 0px #0000000D' : 'none'};
+    box-shadow: ${({ selected, $displayShadow }) =>
+      selected && $displayShadow ? '0px 4px 8px 0px #0000000D' : 'none'};
     transition: all 0.4s ease;
     padding: 0;
-    border-radius: ${({ borderRadius }) => borderRadius};
+    border-radius: ${({ $borderRadius }) => $borderRadius};
     border: ${({ border }) => border};
     align-items: flex-start;
     justify-content: center;
@@ -136,7 +136,8 @@ const StyledCard = styled(Card)`
 
     &:hover {
       background-color: ${({ hoverBackground }) => hoverBackground};
-      box-shadow: ${({ shadow }) => shadow && '0px 4px 8px 0px #0000000d'};
+      box-shadow: ${({ $displayShadow }) =>
+        $displayShadow && '0px 4px 8px 0px #0000000d'};
       border: ${({ borderHover }) => borderHover};
 
       .tooltip {
@@ -226,9 +227,9 @@ function Tabs({ collapsed }) {
     <StyledTabs
       $collapsed={collapsed}
       $backgroundColor={isMobile ? theme.secondary : theme.backgroundColor}
-      borderRadius={theme.borderRadius.small}
+      $borderRadius={theme.borderRadius.small}
       border={theme.border.default}
-      shadow={theme.shadow}
+      $displayShadow={theme.shadow}
     >
       {tabs.map((tab) => (
         <Tab $collapsed={collapsed} key={tab.title} selected={tab.selected}>
@@ -241,16 +242,16 @@ function Tabs({ collapsed }) {
             hoverBackground={theme.selected}
             $collapsed={collapsed}
             tooltipBackgroundColor={theme.accent}
-            borderRadius={theme.borderRadius.tab}
+            $borderRadius={theme.borderRadius.tab}
             border={tab.selected ? theme.border.tabSelected : theme.border.tab}
             borderHover={theme.border.tabSelected}
-            shadow={theme.shadow}
+            $displayShadow={theme.shadow}
           >
             <Indicator
               $backgroundColor={tab.selected ? theme.accent : 'transparent'}
               selected={tab.selected}
               $collapsed={collapsed}
-              borderRadius={
+              $borderRadius={
                 collapsed
                   ? theme.borderRadius.indicatorCollapsed
                   : theme.borderRadius.indicator

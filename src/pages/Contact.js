@@ -48,7 +48,15 @@ const Subtitle = styled.h2`
   font-weight: 400;
 
   @media screen and (max-width: ${small}) {
-    font-size: 3rem;
+    font-size: 2.6rem;
+  }
+`;
+
+const MobileBreak = styled.br`
+  display: none;
+
+  @media screen and (max-width: ${small}) {
+    display: block;
   }
 `;
 
@@ -57,7 +65,10 @@ function Contact() {
     <Container>
       <TitleContainer>
         <Title>Get in touch</Title>
-        <Subtitle>Do you want to work together? Send me a message</Subtitle>
+        <Subtitle>
+          Do you want to work together? <MobileBreak />
+          Send me a message
+        </Subtitle>
       </TitleContainer>
       <ContactForm />
     </Container>

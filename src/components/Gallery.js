@@ -1,10 +1,23 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components/macro';
 import Card from './Card';
-import friends from '../images/Gallery/Friends.png';
+import Friends from '../images/Gallery/Friends.png';
+import Boat from '../images/Gallery/Boat.jpg';
+import Bernabeu from '../images/Gallery/Bernabeu.jpg';
+import Chess from '../images/Gallery/Chess.jpg';
+import Football from '../images/Gallery/Football.jpg';
+import Skydive from '../images/Gallery/Skydive.jpg';
+import Working from '../images/Gallery/Working.jpeg';
+import Jake from '../images/Gallery/Jake.jpg';
+import LazerQuest from '../images/Gallery/LazerQuest.jpg';
+import Pompei from '../images/Gallery/Pompei.jpg';
+import Swimming from '../images/Gallery/Swimming.jpg';
+import Bucky from '../images/Gallery/Bucky.jpg';
+import Bucky2 from '../images/Gallery/Bucky2.jpg';
 import SlideIndicator from './SlideIndicator';
 import { small } from '../styles/breakpoints';
 import { fadeInAndSlideUp } from '../keyframes';
+import { useWindowDimensions } from '../hooks';
 
 const Container = styled.div`
   position: relative;
@@ -13,16 +26,40 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   flex: 1;
-  padding-bottom: 20px;
-  max-height: 400px;
+  /* padding-bottom: 20px; */
+  max-height: ${({ $maxHeight }) => `${$maxHeight}px`};
   opacity: 0;
   animation: 0.8s ${fadeInAndSlideUp} 0.8s ease forwards;
+
+  .arrows {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    width: 100%;
+  }
+
+  &:hover {
+    .arrows {
+      opacity: 1;
+    }
+  }
+
+  @media screen and (max-width: ${small}) {
+    max-height: 300px;
+  }
+
+  @media screen and (max-width: ${small}) {
+    &:hover {
+      .images {
+        transform: none;
+      }
+    }
+  }
 `;
 
 const StyledGallery = styled(Card)`
   flex: 1;
   min-height: 250px;
-  /* height: 100%; */
+  height: 100%;
   position: relative;
 
   .card.gallery {
@@ -30,7 +67,7 @@ const StyledGallery = styled(Card)`
     box-shadow: none;
     padding: 0;
     overflow: hidden;
-    max-height: 500px;
+    /* max-height: 280px; */
     position: relative;
   }
 `;
@@ -39,6 +76,7 @@ const Images = styled.div`
   display: flex;
   min-width: 100%;
   height: 100%;
+  position: relative;
 `;
 
 const Image = styled.img`
@@ -46,48 +84,77 @@ const Image = styled.img`
   height: 100%;
   object-fit: cover;
   position: relative;
-  transition: transform 0.5s ease, transform-origin 0.2s ease;
+  transition: transform 10s linear;
+  filter: ${({ filter }) => filter};
 
-  &:hover {
-    transform: scale(1.05);
-    transform-origin: ${({ x, y }) => `${x}px ${y}px`};
-  }
-
-  @media screen and (max-width: ${small}) {
-    &:hover {
-      transform: none;
-    }
+  &.selected {
+    transform: scale(1.1);
   }
 `;
 
 const images = [
-  { src: friends, title: 'friends' },
-  { src: friends, title: 'family' },
-  { src: friends, title: 'animals' },
+  { src: Friends, title: 'Friends' },
+  { src: Boat, title: 'Family' },
+  { src: Bernabeu, title: 'Bernabeu' },
+  { src: Chess, title: 'Chess' },
+  { src: Skydive, title: 'Skydive' },
+  { src: Football, title: 'Football' },
+  { src: Working, title: 'Working' },
+  { src: Jake, title: 'Jake' },
+  { src: LazerQuest, title: 'Lazer Quest' },
+  { src: Bucky, title: 'Bucky' },
+  { src: Bucky2, title: 'Bucky 2' },
+  { src: Pompei, title: 'Pompei' },
+  { src: Swimming, title: 'Swimming' },
 ];
 
 export default function Gallery() {
   const [selected, setSelected] = useState(0);
-  const [mouseCoordinates, setMouseCoordinates] = useState({ x: 0, y: 0 });
   const ref = useRef();
   const prevWidth = useRef(0);
   const initialRender = useRef(true);
+  const { width: windowWidth } = useWindowDimensions();
+  const maxHeight = Math.min(windowWidth * 0.21, 500);
+  const selectedRef = useRef(0);
+  const [isInViewport, setIsInViewport] = useState(true);
 
-  const onMouseMove = (x) => {
-    const { x: containerX, y: containerY } =
-      ref.current?.getBoundingClientRect() ?? {};
+  const handleClick = (direction) => {
+    setSelected((prev) => {
+      let newSelected;
 
-    setMouseCoordinates({
-      x: x.pageX - containerX,
-      y: x.pageY - containerY,
+      if (direction === 'left') {
+        newSelected = prev - 1 < 0 ? images.length - 1 : prev - 1;
+      } else {
+        newSelected = prev + 1 > images.length - 1 ? 0 : prev + 1;
+      }
+
+      return newSelected;
     });
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const top = ref.current?.getBoundingClientRect().top;
+      const height = ref.current?.getBoundingClientRect().height;
+
+      setIsInViewport(top + height > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const section = document.querySelector(`.image-${selected}`);
 
     if (!initialRender.current) {
-      section.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      section.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+      });
     }
 
     const resizeObserver = new ResizeObserver((entries) => {
@@ -100,7 +167,11 @@ export default function Gallery() {
           width !== prevWidth.current
         ) {
           prevWidth.current = width;
-          section.scrollIntoView();
+          section.scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest',
+            inline: 'nearest',
+          });
         }
 
         if (typeof width === 'number' && width !== prevWidth.current)
@@ -114,29 +185,48 @@ export default function Gallery() {
     return () => resizeObserver.disconnect();
   }, [selected]);
 
+  useEffect(() => {
+    const startInterval = () =>
+      setInterval(() => {
+        handleClick('right');
+      }, 6000);
+    let interval = startInterval();
+
+    if (selectedRef.current !== selected) {
+      clearInterval(interval);
+      interval = startInterval();
+    }
+
+    if (!isInViewport) {
+      clearInterval(interval);
+    }
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [selected, isInViewport]);
+
+  useEffect(() => {
+    selectedRef.current = selected;
+  }, [selected]);
+
   return (
-    <Container ref={ref}>
+    <Container $maxHeight={maxHeight} ref={ref}>
       <StyledGallery cardClassName="gallery">
         <Images>
           {images.map((image, i) => (
             <Image
               key={image.title}
-              className={`image-${selected === i ? i : ''}`}
+              className={`image-${selected === i ? i : ''}${
+                selected === i ? ' selected' : ''
+              }`}
               alt={image.title}
               src={image.src}
-              x={mouseCoordinates.x}
-              y={mouseCoordinates.y}
-              onMouseMove={onMouseMove}
             />
           ))}
         </Images>
       </StyledGallery>
-      <SlideIndicator
-        className="indicator"
-        slides={images}
-        selected={selected}
-        setSelected={setSelected}
-      />
+      <SlideIndicator handleClick={handleClick} />
     </Container>
   );
 }

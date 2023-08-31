@@ -1,6 +1,7 @@
 import React from 'react';
 import { createGlobalStyle } from 'styled-components/macro';
 import { useTheme } from '../context/theme';
+import { small } from './breakpoints';
 
 const StyledTypography = createGlobalStyle`
 html {
@@ -14,6 +15,10 @@ body {
   color: ${({ color }) => color};
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  @media screen and (max-width: ${small}) {
+    font-size: 1.6rem;
+  }
 }
 
 h1,
@@ -35,7 +40,7 @@ h3 {
   font-size: 1.5rem;
 }
 
-p {
+p, span {
   margin: 0;
   line-height: 170%;
 }

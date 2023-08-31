@@ -61,11 +61,10 @@ const Subtitle = styled.h2`
   font-size: 2rem;
   font-weight: 400;
   display: flex;
-  gap: 4px;
   flex-wrap: wrap;
 
   @media screen and (max-width: ${small}) {
-    font-size: 3rem;
+    font-size: 2.8rem;
     flex-direction: column;
   }
 `;
@@ -142,7 +141,7 @@ const TitleContainer = styled.div`
 const detailsListItems = [
   { label: 'Age', value: <Countdown date={new Date(1995, 9, 20)} /> },
   { label: 'Nationality', value: <Text>British</Text> },
-  { label: 'Lives in', value: <Text>Lent, Netherlands</Text> },
+  { label: 'Lives in', value: <Text>Nijmegen, Netherlands</Text> },
   { label: 'Languages', value: <Text>English (Native), Dutch (Basic)</Text> },
 ];
 

@@ -37,7 +37,7 @@ import { fadeInAndSlideUp } from '../../keyframes';
 const Container = styled.div`
   width: 100%;
   height: 100vh;
-  overflow: auto;
+  /* overflow: auto; */
   display: flex;
   flex-direction: column;
   padding: 40px 0 4px 40px;
@@ -46,7 +46,8 @@ const Container = styled.div`
 
   @media screen and (max-width: ${medium}) {
     min-height: 100vh;
-    padding: 40px 20px;
+    height: auto;
+    padding: 40px 0;
   }
 
   @media screen and (max-width: ${small}) {
@@ -62,6 +63,11 @@ const ProjectContainer = styled.div`
   position: relative;
   opacity: 0;
   animation: 0.8s ${fadeInAndSlideUp} 1s ease forwards;
+
+  @media screen and (max-width: ${small}) {
+    /* animation: none; */
+    opacity: 1;
+  }
 `;
 
 const TitleContainer = styled.div`
@@ -72,7 +78,8 @@ const TitleContainer = styled.div`
   animation: 0.6s ${fadeInAndSlideUp} 0.4s ease forwards;
 
   @media screen and (max-width: ${small}) {
-    padding: 20px 40px 20px 20px;
+    padding: 20px 40px 0 20px;
+    /* animation: none; */
   }
 `;
 
@@ -86,23 +93,27 @@ const Title = styled.h1`
 `;
 
 const Subtitle = styled.h2`
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 400;
+  display: flex;
+  flex-wrap: wrap;
 
   @media screen and (max-width: ${small}) {
-    font-size: 3rem;
+    font-size: 2.6rem;
+    flex-direction: column;
   }
 `;
 
 const QuoteCard = styled(Card)`
   margin-right: 60px;
   max-width: 1000px;
-  opacity: 0;
-  animation: 0.6s ${fadeInAndSlideUp} 0.6s ease forwards;
+  transform: translateY(20px);
 
   .card.quote {
+    opacity: 0;
     box-shadow: ${({ boxShadow }) => `30px 60px 0px 0px ${boxShadow}`};
     padding: 2rem 3rem;
+    animation: 0.6s ${fadeInAndSlideUp} 0.8s ease forwards;
 
     h2 {
       font-size: 1.6rem;
@@ -135,7 +146,6 @@ const Quoted = styled.a`
   font-size: 1.6rem;
   font-weight: 700;
   text-decoration: underline;
-  width: 90%;
   text-align: right;
   padding-left: 20px;
   color: ${({ color }) => color};
@@ -157,13 +167,27 @@ const H3 = styled.h3`
 
 function Experience() {
   const { theme } = useTheme();
+  const [transition, setTransition] = useState('in');
   const [currentProject, setCurrentProject] = useState(projects[0]);
+  const [previousProject, setPreviousProject] = useState(projects[0]);
+
+  const handleProjectChange = (project) => {
+    setTransition('out');
+    setPreviousProject(currentProject);
+    setCurrentProject(project);
+    setTimeout(() => {
+      setTransition('in');
+    }, 400);
+  };
 
   return (
     <Container>
       <TitleContainer>
         <Title>My experience</Title>
-        <Subtitle>Curious about my work?</Subtitle>
+        <Subtitle>
+          <span>Here&apos;s what I can do, </span>
+          <span>and how I do it </span>
+        </Subtitle>
       </TitleContainer>
 
       <QuoteCard boxShadow={theme.boxShadow} cardClassName="quote">
@@ -192,10 +216,13 @@ function Experience() {
         <Spacer size="l" />
         <ProjectList
           currentProject={currentProject}
-          setCurrentProject={setCurrentProject}
+          setCurrentProject={handleProjectChange}
         />
       </ProjectContainer>
-      <Project project={currentProject} />
+      <Project
+        transition={transition}
+        project={transition === 'out' ? previousProject : currentProject}
+      />
     </Container>
   );
 }

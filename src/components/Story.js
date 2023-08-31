@@ -6,6 +6,7 @@ import TimelineItem from './TimelineItem';
 import TimelineLines from './TimelineLines';
 import { large, medium, small, xlarge } from '../styles/breakpoints';
 import { fadeInAndSlideLeft, fadeInAndSlideUp } from '../keyframes';
+import { useWindowDimensions } from '../hooks';
 
 const StyledStory = styled.div`
   flex: 1;
@@ -15,8 +16,6 @@ const StyledStory = styled.div`
   flex-direction: column;
   align-items: flex-end;
   gap: 20px;
-  opacity: 0;
-  animation: 0.8s ${fadeInAndSlideLeft} 1s ease forwards;
 
   @media screen and (max-width: ${large}) {
     flex: auto;
@@ -60,18 +59,18 @@ const Container = styled.div`
 `;
 
 const Background = styled.div`
-  background-color: ${({ backgroundColor }) => backgroundColor};
+  background-color: ${({ $backgroundColor }) => $backgroundColor};
   position: fixed;
   width: 32vw;
   top: ${({ $scrollY }) => `${Math.max(-40, 125 - $scrollY / 2)}px`};
   right: 90px;
   bottom: 0px;
-  border-radius: ${({ borderRadius }) => borderRadius};
+  border-radius: ${({ $borderRadius }) => $borderRadius};
   border: ${({ border }) => border};
   z-index: -1;
   transition: transform 0.2s ease;
   opacity: 0;
-  animation: 0.6s ${fadeInAndSlideUp} 1.4s ease forwards;
+  animation: 0.6s ${fadeInAndSlideUp} 0.6s ease forwards;
 
   @media screen and (max-width: ${xlarge}) {
     width: 30vw;
@@ -105,6 +104,8 @@ const List = styled.div`
   gap: 20px;
   /* overflow: auto; */
   padding: 40px 100px 40px 40px;
+  opacity: 0;
+  animation: 0.8s ${fadeInAndSlideLeft} 1s ease forwards;
 
   @media screen and (max-width: ${large}) {
     padding: 40px 80px 40px 40px;
@@ -138,6 +139,8 @@ export default function Story() {
   const [height, setHeight] = useState();
   const [scrollY, setScrollY] = useState(0);
   const [itemPositions, setItemPositions] = useState([]);
+  const { width } = useWindowDimensions();
+  const isDesktop = width > Number.parseInt(small.replace('px', ''), 10);
 
   useEffect(() => {
     const resizeObserver = new ResizeObserver(() => {
@@ -151,16 +154,18 @@ export default function Story() {
   }, []);
 
   const handleScroll = (e) => {
-    setScrollY(e.target.scrollTop);
+    if (isDesktop) {
+      setScrollY(e.target.scrollTop);
+    }
   };
 
   return (
     <Container ref={ref}>
       <StyledStory onScroll={handleScroll}>
         <Background
-          borderRadius={theme.borderRadius.default}
+          $borderRadius={theme.borderRadius.default}
           $scrollY={scrollY}
-          backgroundColor={theme.boxShadow}
+          $backgroundColor={theme.boxShadow}
           border={theme.border.background}
         />
         <List>

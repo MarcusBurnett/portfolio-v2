@@ -2,7 +2,7 @@ import React from 'react';
 import { styled } from 'styled-components';
 import projects from '../data/projects';
 import { useTheme } from '../context/theme';
-import { medium } from '../styles/breakpoints';
+import { medium, small } from '../styles/breakpoints';
 
 const StyledProjectList = styled.div`
   display: flex;
@@ -44,7 +44,7 @@ const Container = styled.div`
 `;
 
 const Project = styled.img`
-  border-radius: ${({ borderRadius }) => borderRadius};
+  border-radius: ${({ $borderRadius }) => $borderRadius};
   transform: ${({ selected }) => selected && 'scale(1.1) translateY(5px)'};
   transition: all 0.4s ease;
   width: 80%;
@@ -57,14 +57,18 @@ const Project = styled.img`
     transform: ${({ selected }) =>
       selected ? 'scale(1.1) translateY(5px)' : 'scale(1.08)'};
   }
+
+  @media screen and (max-width: ${small}) {
+    min-width: 20vw;
+  }
 `;
 
 const Indicator = styled.div`
   width: 40px;
   height: 5px;
-  border-radius: ${({ borderRadius }) => borderRadius};
-  background-color: ${({ backgroundColor }) => backgroundColor};
-  opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
+  border-radius: ${({ $borderRadius }) => $borderRadius};
+  background-color: ${({ $backgroundColor }) => $backgroundColor};
+  opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
   position: absolute;
   bottom: -30px;
   transition: all 0.4s ease;
@@ -78,13 +82,13 @@ const ProjectContainer = styled.div`
 `;
 
 const Background = styled.div`
-  background-color: ${({ backgroundColor }) => backgroundColor};
+  background-color: ${({ $backgroundColor }) => $backgroundColor};
   width: calc(100% - 1rem);
   position: absolute;
   left: 1rem;
   top: 2rem;
   bottom: 0;
-  border-radius: ${({ borderRadius }) => borderRadius};
+  border-radius: ${({ $borderRadius }) => $borderRadius};
   z-index: -1;
   transition: background-color 0.4s ease;
   border: ${({ border }) => border};
@@ -96,8 +100,8 @@ export default function ProjectList({ currentProject, setCurrentProject }) {
   return (
     <StyledProjectList>
       <Background
-        borderRadius={theme.borderRadius.default}
-        backgroundColor={theme.boxShadow}
+        $borderRadius={theme.borderRadius.default}
+        $backgroundColor={theme.boxShadow}
         border={theme.border.background}
       />
 
@@ -106,16 +110,19 @@ export default function ProjectList({ currentProject, setCurrentProject }) {
           const selected = currentProject.title === project.title;
 
           return (
-            <ProjectContainer onClick={() => setCurrentProject(project)}>
+            <ProjectContainer
+              key={project.title}
+              onClick={() => setCurrentProject(project)}
+            >
               <Project
                 src={project.tile}
-                borderRadius={theme.borderRadius.medium}
+                $borderRadius={theme.borderRadius.medium}
                 selected={selected}
               />
               <Indicator
-                backgroundColor={theme.accent}
-                borderRadius={theme.borderRadius.tooltip}
-                isVisible={selected}
+                $backgroundColor={theme.accent}
+                $borderRadius={theme.borderRadius.tooltip}
+                $isVisible={selected}
               />
             </ProjectContainer>
           );

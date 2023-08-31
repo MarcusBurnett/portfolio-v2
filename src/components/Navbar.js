@@ -26,7 +26,7 @@ const StyledNavbar = styled.nav`
 
   @media screen and (max-width: ${small}) {
     padding: ${({ $scrollPosition }) =>
-      $scrollPosition > 50 ? '1rem 2rem' : '2rem'};
+      $scrollPosition > 250 ? '1rem 2rem' : '2rem'};
 
     width: 100%;
     max-width: none;
@@ -54,13 +54,13 @@ const StyledCard = styled(Card)`
     padding-bottom: 2rem;
     padding: ${({ $collapsed }) =>
       $collapsed ? '1rem 1rem 2rem' : '2rem 3rem'};
-    box-shadow: ${({ $collapsed, boxShadow }) =>
+    box-shadow: ${({ $collapsed, $boxShadow }) =>
       $collapsed
-        ? `-20px 20px 0px 0px ${boxShadow}`
-        : `-35px 20px 0px 0px ${boxShadow}`};
+        ? `-20px 20px 0px 0px ${$boxShadow}`
+        : `-35px 20px 0px 0px ${$boxShadow}`};
     align-items: center;
-    border-radius: ${({ $collapsed, borderRadius }) =>
-      $collapsed ? borderRadius : borderRadius};
+    border-radius: ${({ $collapsed, $borderRadius }) =>
+      $collapsed ? $borderRadius : $borderRadius};
     transition: all 0.4s ease;
   }
 `;
@@ -70,12 +70,14 @@ const ProfilePicture = styled.img`
   max-height: ${({ $collapsed }) => ($collapsed ? '5rem' : '10rem')};
   object-fit: contain;
   transition: all 0.4s ease;
-  border-radius: ${({ borderRadius }) => borderRadius};
+  border-radius: ${({ $borderRadius }) => $borderRadius};
+  filter: ${({ filter }) => filter};
 
   @media screen and (max-width: ${small}) {
-    width: ${({ $scrollPosition }) => ($scrollPosition > 50 ? '4rem' : '6rem')};
+    width: ${({ $scrollPosition }) =>
+      $scrollPosition > 250 ? '4rem' : '6rem'};
     max-height: ${({ $scrollPosition }) =>
-      $scrollPosition > 50 ? '4rem' : '6rem'};
+      $scrollPosition > 250 ? '4rem' : '6rem'};
   }
 `;
 
@@ -95,11 +97,11 @@ const SubHeader = styled.div`
   @media screen and (max-width: ${small}) {
     align-items: flex-start;
     gap: 0;
-    height: ${({ $scrollPosition }) => ($scrollPosition > 50 ? '0' : '3rem')};
+    height: ${({ $scrollPosition }) => ($scrollPosition > 250 ? '0' : '4rem')};
     transition: all 0.4s ease;
 
     h2 {
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       text-align: left;
     }
   }
@@ -124,9 +126,10 @@ const HeaderContent = styled.div`
     flex: 1;
 
     h1 {
-      font-size: 1.8rem;
-      text-align: flex-start;
-      margin-top: 2px;
+      font-size: 2rem;
+      text-align: left;
+      margin-top: 6px;
+      line-height: 2.2rem;
     }
   }
 `;
@@ -146,7 +149,7 @@ const HeaderTextContainer = styled.div`
 
   @media screen and (max-width: ${small}) {
     align-items: flex-start;
-    gap: 0;
+    gap: 2px;
     flex: 1;
   }
 `;
@@ -174,7 +177,7 @@ const MobileMenu = styled.div`
   background-color: ${({ $menuOpen, $backgroundColor }) =>
     $menuOpen ? $backgroundColor : 'transparent'};
   box-shadow: ${({ $menuOpen }) => $menuOpen && '-2px 8px 8px 0px #0000001a'};
-  border-radius: ${({ borderRadius }) => borderRadius};
+  border-radius: ${({ $borderRadius }) => $borderRadius};
   align-items: center;
   padding: 2px 4px 4px 4px;
   overflow: hidden;
@@ -196,9 +199,10 @@ const CollapsedMenu = styled.div`
   background-color: ${({ $menuOpen, $backgroundColor }) =>
     $menuOpen ? $backgroundColor : 'transparent'};
   box-shadow: ${({ $menuOpen }) => $menuOpen && '-2px 8px 8px 0px #0000001a'};
-  border-radius: ${({ borderRadius }) => borderRadius};
+  border-radius: ${({ $borderRadius }) => $borderRadius};
   align-items: center;
   padding: 4px;
+  overflow: ${({ $menuOpen }) => ($menuOpen ? 'visible' : 'hidden')};
   /* overflow: hidden; */
   transition: all 0.3s ease;
 `;
@@ -229,7 +233,7 @@ const StyledIcons = styled(Icons)`
   flex-direction: row;
   flex-wrap: nowrap;
   overflow: ${({ $collapsed, $menuOpen }) =>
-    $collapsed && !$menuOpen && 'hidden'};
+    ($collapsed && !$menuOpen && 'hidden') || 'visible'};
 
   @media screen and (max-width: ${small}) {
     flex-wrap: wrap;
@@ -288,9 +292,10 @@ function Header({ collapsed }) {
         $scrollPosition={scrollPosition}
         $collapsed={collapsed}
         src={profilePicture}
-        borderRadius={
+        $borderRadius={
           collapsed ? theme.borderRadius.small : theme.borderRadius.medium
         }
+        filter={theme.imageFilter}
       />
       <HeaderContent $collapsed={collapsed}>
         <HeaderTextContainer $collapsed={collapsed}>
@@ -306,7 +311,7 @@ function Header({ collapsed }) {
               $backgroundColor={theme.contactIcons}
               $menuOpen={menuOpen}
               $collapsed={collapsed}
-              borderRadius={theme.borderRadius.small}
+              $borderRadius={theme.borderRadius.small}
             >
               <CollapsedMenuIconContainer $collapsed={collapsed}>
                 <NavbarMenuIcon
@@ -317,7 +322,7 @@ function Header({ collapsed }) {
               </CollapsedMenuIconContainer>
               <StyledIcons
                 $collapsed={collapsed}
-                menuOpen={menuOpen}
+                $menuOpen={menuOpen}
                 opacity={!collapsed || (collapsed && menuOpen) ? 1 : 0}
               />
             </CollapsedMenu>
@@ -329,11 +334,15 @@ function Header({ collapsed }) {
           <MobileMenu
             $backgroundColor={theme.contactIcons}
             $menuOpen={menuOpen}
-            borderRadius={theme.borderRadius.small}
+            $borderRadius={theme.borderRadius.small}
             border={theme.border.default}
           >
             <NavbarMenuIcon menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-            <StyledIcons opacity={menuOpen ? 1 : 0} />
+            <StyledIcons
+              $collapsed={collapsed}
+              $menuOpen={menuOpen}
+              opacity={!collapsed || (collapsed && menuOpen) ? 1 : 0}
+            />
           </MobileMenu>
         </MobileMenuContainer>
       )}
@@ -360,10 +369,10 @@ export default function Navbar() {
   ) : (
     <StyledNavbar ref={ref} $collapsed={collapsed}>
       <StyledCard
-        boxShadow={theme.boxShadow}
+        $boxShadow={theme.boxShadow}
         $collapsed={collapsed}
         cardClassName="container"
-        borderRadius={theme.borderRadius.default}
+        $borderRadius={theme.borderRadius.default}
       >
         <Header collapsed={collapsed} />
         <TabContainer>

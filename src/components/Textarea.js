@@ -14,12 +14,12 @@ const TextareaField = styled.textarea`
   overflow-y: scroll;
   padding: 2rem;
   min-height: 4rem;
-  border-radius: ${({ borderRadius }) => borderRadius};
+  border-radius: ${({ $borderRadius }) => $borderRadius};
   border: ${({ border }) => border};
   -webkit-appearance: none;
   color: ${({ color }) => color};
   transition: all 0.4s ease;
-  background-color: ${({ backgroundColor }) => backgroundColor};
+  background-color: ${({ $backgroundColor }) => $backgroundColor};
 
   &:hover {
     background-color: ${({ hover }) => hover};
@@ -28,8 +28,8 @@ const TextareaField = styled.textarea`
   &:focus {
     outline: none;
     outline: none;
-    border: ${({ focusBorder }) => focusBorder};
-    box-shadow: ${({ focusBorder }) => focusBorder};
+    border: ${({ $focusBorder }) => $focusBorder};
+    box-shadow: ${({ $focusBorder }) => $focusBorder};
   }
 
   @media screen and (max-width: ${small}) {
@@ -72,7 +72,7 @@ function Textarea({ name, label, onChange, value, error, valid }) {
 
   return (
     <StyledTextarea>
-      <LabelContainer backgroundColor={theme.backgroundColor}>
+      <LabelContainer $backgroundColor={theme.backgroundColor}>
         <Label
           error={error}
           color={theme.input?.label}
@@ -92,14 +92,14 @@ function Textarea({ name, label, onChange, value, error, valid }) {
           error={error}
           rows={5}
           color={theme.input?.color}
-          borderRadius={theme.input?.borderRadius}
-          focusBorder={theme.input?.focusBorder}
+          $borderRadius={theme.input?.borderRadius}
+          $focusBorder={theme.input?.focusBorder}
           border={
             (error && theme.input?.errorBorder) ||
             (valid && theme.input?.validBorder) ||
             theme.input?.border
           }
-          backgroundColor={theme.input?.backgroundColor}
+          $backgroundColor={theme.input?.backgroundColor}
           hover={theme.input?.hover}
         />
       </TextareaContainer>

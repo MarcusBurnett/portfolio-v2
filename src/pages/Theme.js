@@ -48,7 +48,7 @@ const Subtitle = styled.h2`
   font-weight: 400;
 
   @media screen and (max-width: ${small}) {
-    font-size: 3rem;
+    font-size: 2.6rem;
   }
 `;
 
@@ -63,14 +63,14 @@ const Themes = styled.div`
 `;
 
 const Background = styled.div`
-  background-color: ${({ backgroundColor }) => backgroundColor};
+  background-color: ${({ $backgroundColor }) => $backgroundColor};
   position: absolute;
   width: 100%;
   height: 100%;
   top: 40px;
   right: 40px;
   bottom: 0px;
-  border-radius: ${({ borderRadius }) => borderRadius};
+  border-radius: ${({ $borderRadius }) => $borderRadius};
   border: ${({ border }) => border};
   z-index: -1;
   transition: background-color 0.4s ease;
@@ -94,12 +94,16 @@ function Theme() {
       </TitleContainer>
       <Themes>
         <Background
-          borderRadius={theme.borderRadius.default}
-          backgroundColor={theme.boxShadow}
+          $borderRadius={theme.borderRadius.default}
+          $backgroundColor={theme.boxShadow}
           border={theme.border.background}
         />
         {themes?.map((t) => (
-          <ThemeTile theme={t} selected={t.title === theme.title} />
+          <ThemeTile
+            key={t.title}
+            theme={t}
+            selected={t.title === theme.title}
+          />
         ))}
       </Themes>
     </Container>

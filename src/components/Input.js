@@ -12,10 +12,10 @@ const StyledInput = styled.div`
 
 const InputField = styled.input`
   flex: 1;
-  background-color: ${({ backgroundColor }) => backgroundColor};
+  background-color: ${({ $backgroundColor }) => $backgroundColor};
   padding: 2rem;
   min-height: 5rem;
-  border-radius: ${({ borderRadius }) => borderRadius};
+  border-radius: ${({ $borderRadius }) => $borderRadius};
   border: ${({ border }) => border};
   -webkit-appearance: none;
   color: ${({ color }) => color};
@@ -27,8 +27,8 @@ const InputField = styled.input`
 
   &:focus {
     outline: none;
-    border: ${({ focusBorder }) => focusBorder};
-    box-shadow: ${({ focusBorder }) => focusBorder};
+    border: ${({ $focusBorder }) => $focusBorder};
+    box-shadow: ${({ $focusBorder }) => $focusBorder};
   }
 
   @media screen and (max-width: ${small}) {
@@ -72,7 +72,7 @@ function Input({ name, label, onChange, value, error, valid }) {
 
   return (
     <StyledInput>
-      <LabelContainer backgroundColor={theme.backgroundColor}>
+      <LabelContainer $backgroundColor={theme.backgroundColor}>
         <Label
           error={error}
           color={theme.input?.label}
@@ -90,15 +90,15 @@ function Input({ name, label, onChange, value, error, valid }) {
           value={value}
           onChange={onChange}
           error={error}
-          focusBorder={theme.input?.focusBorder}
+          $focusBorder={theme.input?.focusBorder}
           color={theme.input?.color}
-          borderRadius={theme.input?.borderRadius}
+          $borderRadius={theme.input?.borderRadius}
           border={
             (error && theme.input?.errorBorder) ||
             (valid && theme.input?.validBorder) ||
             theme.input?.border
           }
-          backgroundColor={theme.input?.backgroundColor}
+          $backgroundColor={theme.input?.backgroundColor}
           hover={theme.input?.hover}
         />
       </InputContainer>

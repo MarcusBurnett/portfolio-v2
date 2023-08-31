@@ -12,15 +12,18 @@ import codeNationBackground from '../images/Timeline/code-nation-background.png'
 import airtimeRewardsBackground from '../images/Timeline/airtime-rewards-background.png';
 import toBeContinued from '../images/Timeline/to-be-continued.jpeg';
 import becomingAFather from '../images/Timeline/becoming-a-father.jpg';
+import becomingAFatherAgain from '../images/Timeline/becoming-a-father-again.jpg';
 import avios from '../images/Timeline/avios.jpeg';
-import udemy from '../images/Timeline/udemy.jpeg';
+import netherlands from '../images/Timeline/netherlands.jpg';
+import bucky from '../images/Timeline/bucky.jpg';
+import sendcloud from '../images/Gallery/LazerQuest.jpg';
 
 export default [
   {
     image: bolton,
-    title: 'D.O.B - 20th October 1995',
+    title: 'The day it all started',
     content:
-      'I was born and raised in Bolton, UK, by two loving and successful parents. I have an older sister and for the majority of our childhood, we lived next door to my auntie, who lived next door to my grandparents, so I have always been close with my family.',
+      'I was born on the 20th October 1995 and was raised in Bolton, UK, by two loving and successful parents. I have an older sister and for the majority of our childhood, we lived next door to my aunt, who in turn lived next door to my grandparents, so I have always been close with my family.',
     year: '1995',
   },
   {
@@ -94,24 +97,17 @@ export default [
     year: '2017',
   },
   {
-    image: udemy,
-    title: 'Learning with Udemy',
-    content:
-      "While at Avios, I decided to look into creating websites and mobile apps on Udemy. I started with the design, learning how to use Adobe XD. After a while, I had some fun apps designed and had created prototypes. However, I found it frustrating that I wasn't able to take these any further. So I decided to try 'The Web Developer Bootcamp`, a full stack developer course by Colt Steele, and I loved it. This is when I started seriously exploring a career as a developer.",
-    year: '2019',
-  },
-  {
     image: codeNationBackground,
     title: 'Code Nation',
     content:
-      "Once I had decided on my new career, I had to pick the best way to enter the field. This resulted in a choice between a 4 year web developer course at UCLAN, or a 12 week course at Code Nation in Manchester, who promised to train me as a developer and help me to find a job afterwards. My mind was made up after reading a number of developers' blogs which pointed out that given the speed at which technology advances, the topics selected at the start of a 4 year course would likely be outdated by the end of it.",
+      "Once I had decided on my new career, I had to pick the best way to enter the field of development. This resulted in a choice between a 4 year web developer course at UCLAN, or a 12 week course at Code Nation in Manchester, who promised to train me as a developer and help me to find a job afterwards. My mind was made up after reading a number of developers' blogs, which pointed out that, given the speed at which technology advances, the topics selected at the start of a 4 year course would likely be outdated by the end of it.",
     year: '2019',
   },
   {
     image: airtimeRewardsBackground,
     title: 'Airtime Rewards',
     content:
-      "Though my experience at Code Nation was well below expectations, it did help me to prepare for, and get, my first job. I joined Airtime Rewards shortly after the course ended and haven't looked back since. It has been fantastic to see the company develop during my time here, from 250k users when I joined, to over 1 million members by 2021, and as part of a rather small team I have been able to contribute and grow as a developer.",
+      "Though my experience at Code Nation was well below expectations, it did help me to prepare for, and get, my first job. I joined Airtime Rewards shortly after the course ended and haven't looked back since. It was fantastic to see the company develop, growing from 250k users when I joined, to over 1 million members when I left, and as part of a rather small team I have been able to contribute and grow as a developer. Being a part of such as small team meant I was given a lot of responsibility, and is where I started working in a design/developer hybrid role, both designing and building products for O2, EE and more",
     year: '2019',
   },
   {
@@ -122,10 +118,38 @@ export default [
     year: '2020',
   },
   {
+    image: netherlands,
+    title: 'Moving to the Netherlands',
+    content:
+      "After 5 years living in England, we deciding to move to Imke's home town in the Netherlands. There were a number of factors involved, such as her family and career opportunities, but the biggest factor in the decision was for our family. Our new town is a far more suitable environment in which to raise our son, and he would be able to grow up close to his cousins, who are of a similar age.",
+    year: '2021',
+  },
+  {
+    image: sendcloud,
+    title: 'Working at Sendcloud',
+    content:
+      'Moving to the Netherlands meant I needed a new job. I started looking while still in the UK and one fateful afternoon while walking around Chester Zoo, I found a job post for a designer at Sendcloud, and the rest is history. Now over 2 years in, I am a Senior Product Designer and have continued to progress in my career.',
+    year: '2021',
+  },
+  {
+    image: bucky,
+    title: 'Bucky Joins the Family',
+    content:
+      "Now settled in our new home, there was one thing missing... a puppy! We had wanted one for years, but it wasn't feasible living in a 1st floor apartment in the UK. However, now in a house with a garden, the time was right and in May 2022 we brought our fox-red Labrador Bucky home",
+    year: '2022',
+  },
+  {
+    image: becomingAFatherAgain,
+    title: 'Becoming a Father (again)',
+    content:
+      'In January 2024, we will be welcoming the newest member of our family, a beautiful baby girl!',
+    year: '2023',
+  },
+  {
     image: toBeContinued,
     title: 'The Story Continues...',
     content:
-      'This is just the start of my story. I still have plenty of goals to accomplish and am looking forward to finding out how it all unfolds.',
-    year: '2021',
+      "I'm currently 28, and who knows what lies in store for the future. Whatever comes next, I'm excited to see what happens.",
+    year: '2023',
   },
 ];

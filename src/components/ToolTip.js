@@ -6,11 +6,11 @@ const StyledTooltip = styled.div`
   position: absolute;
   padding: 0.15rem 1rem;
   background-color: ${({ $backgroundColor }) => $backgroundColor};
-  border-radius: ${({ borderRadius }) => borderRadius};
+  border-radius: ${({ $borderRadius }) => $borderRadius};
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 3;
+  z-index: 10;
 
   &::before {
     content: '';
@@ -38,7 +38,7 @@ export default function Tooltip({ children, className }) {
 
   return (
     <StyledTooltip
-      borderRadius={theme.borderRadius.tooltip}
+      $borderRadius={theme.borderRadius.tooltip}
       $backgroundColor={theme.accent}
       className={className}
     >

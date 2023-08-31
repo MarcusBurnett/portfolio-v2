@@ -5,7 +5,7 @@ import { useTheme } from '../../context/theme';
 
 const Menu = styled.div`
   padding: 1rem;
-  border-radius: 0.7rem;
+  border-radius: 50%;
   width: 4.2rem;
   min-height: 4.2rem;
   min-width: 4.2rem;
@@ -18,6 +18,10 @@ const Menu = styled.div`
   cursor: pointer;
   outline: none;
   z-index: 3;
+
+  &:hover {
+    background-color: ${({ $hoverBackgroundColor }) => $hoverBackgroundColor};
+  }
 
   @media screen and (max-width: ${medium}) {
     display: flex;
@@ -67,6 +71,7 @@ function NavbarMenuIcon({ menuOpen, setMenuOpen, collapsible }) {
       role="button"
       tabIndex={0}
       onKeyDown={(e) => e.key === 13 && setMenuOpen((prev) => !prev)}
+      $hoverBackgroundColor={theme.button.secondary.backgroundColor}
     >
       <Line1
         $active={menuOpen}

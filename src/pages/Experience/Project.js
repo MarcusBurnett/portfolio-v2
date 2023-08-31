@@ -1,20 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { styled } from 'styled-components';
 import { useTheme } from '../../context/theme';
 import Spacer from '../../components/Spacer';
 import Tooltip from '../../components/ToolTip';
 import Card from '../../components/Card';
-import { medium } from '../../styles/breakpoints';
+import { medium, small } from '../../styles/breakpoints';
+import { fadeInAndSlideUp } from '../../keyframes';
+import Links from '../../components/Links';
 
 const StyledProject = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px 40px 40px 0;
   margin-bottom: 40px;
+  opacity: 0;
+  animation: 0.8s ${fadeInAndSlideUp} 1s ease forwards;
+
+  .in {
+    transform: translateY(0px);
+    transition: all 0.4s 0.2s ease;
+    opacity: 1;
+  }
+
+  .out {
+    transform: translateY(30px);
+    opacity: 0;
+  }
 
   @media screen and (max-width: ${medium}) {
     padding: 0 20px;
     margin-bottom: 100px;
+  }
+
+  @media screen and (max-width: ${small}) {
+    opacity: 1;
+    animation: none;
   }
 `;
 
@@ -24,6 +44,9 @@ const Container = styled.div`
   gap: 40px;
   position: relative;
   flex-wrap: wrap;
+  transition: all 0.4s ease;
+  opacity: 0;
+  transform: translateY(0px);
 
   @media screen and (max-width: ${medium}) {
     flex-direction: column;
@@ -43,7 +66,8 @@ const Section = styled.div`
 
 const Logo = styled.img`
   object-fit: contain;
-  height: 5rem;
+  height: 8rem;
+  max-width: 80%;
 `;
 
 const Image = styled.img`
@@ -52,16 +76,22 @@ const Image = styled.img`
   min-width: 40rem;
   max-height: 50rem;
   object-fit: contain;
-  transition: transform 0.5s ease;
-  transform-origin: 60% 30%;
+  transition: all 0.5s ease;
+  transform-origin: 50% 30%;
+  visibility: ${({ $loaded }) => ($loaded ? 'visible' : 'hidden')};
 
   &:hover {
-    transform: perspective(20px) rotateY(0.2deg) rotateX(-0.1deg) scale(1.05);
+    transform: perspective(50px) rotateY(-0.2deg) rotateX(0.1deg) scale(1.05);
+  }
+
+  @media screen and (max-width: ${medium}) {
+    /* width: 100%; */
+    min-width: 0;
   }
 `;
 
 const Background = styled.div`
-  background-color: ${({ backgroundColor }) => backgroundColor};
+  background-color: ${({ $backgroundColor }) => $backgroundColor};
   width: 100%;
   max-width: 40rem;
   min-width: 100%;
@@ -69,7 +99,7 @@ const Background = styled.div`
   left: -2rem;
   top: 3rem;
   bottom: -2rem;
-  border-radius: ${({ borderRadius }) => borderRadius};
+  border-radius: ${({ $borderRadius }) => $borderRadius};
   z-index: -1;
   border: ${({ border }) => border};
 `;
@@ -80,6 +110,10 @@ const ImageBackground = styled(Background)`
 
   @media screen and (max-width: ${medium}) {
     left: 0rem;
+    width: 90%;
+    min-width: 90%;
+    height: calc(90% - 2rem);
+    margin-top: 2rem;
   }
 `;
 
@@ -88,7 +122,7 @@ const ToolImage = styled.img`
   height: 5rem;
   min-width: 5rem;
   object-fit: cover;
-  border-radius: ${({ borderRadius }) => borderRadius};
+  border-radius: ${({ $borderRadius }) => $borderRadius};
   transition: transform 0.3s ease;
 
   &:hover {
@@ -138,16 +172,18 @@ const Tool = styled.div`
   }
 `;
 
-const List = styled.ul`
+const List = styled.div`
+  display: flex;
+  flex-direction: column;
   list-style-type: disc;
-  margin-left: 20px;
+  gap: 4px;
+  margin-left: 10px;
 `;
 
 const Description = styled.p`
   margin-right: 2rem;
   max-width: 75rem;
   line-height: 200%;
-  margin-bottom: 10px;
 
   @media screen and (max-width: ${medium}) {
     max-width: 100%;
@@ -156,6 +192,10 @@ const Description = styled.p`
 
 const H3 = styled.h3`
   font-size: 1.6rem;
+
+  @media screen and (max-width: ${small}) {
+    font-size: 1.8rem;
+  }
 `;
 
 const Achievements = styled(Card)`
@@ -179,27 +219,29 @@ const Lessons = styled.div`
   }
 `;
 
-export default function Project({ project }) {
+export default function Project({ project, transition }) {
   const { theme } = useTheme();
+  const [loaded, setLoaded] = useState(false);
 
   return (
     <StyledProject>
-      <Container>
+      <Container className={`${transition || ''}`}>
         <Section>
           <Logo src={project.logos[theme.key]} />
           <List>
-            {project.bullets.map((bullet) => (
-              <li>{bullet}</li>
+            {project.bullets?.map((bullet) => (
+              <li key={bullet}>{bullet}</li>
             ))}
           </List>
           <Description>{project.description}</Description>
+          <Links project={project} />
           <H3>Frequently used tools</H3>
           <Tools>
             {project.tools?.map((tool) => (
-              <Tool>
+              <Tool key={tool.name}>
                 <ToolImage
                   src={tool.img}
-                  borderRadius={theme.borderRadius.tab}
+                  $borderRadius={theme.borderRadius.tab}
                 />
                 <Tooltip className="tooltip">{tool.name}</Tooltip>
               </Tool>
@@ -208,19 +250,23 @@ export default function Project({ project }) {
         </Section>
         <Section>
           <ImageBackground
-            backgroundColor={theme.boxShadow}
-            borderRadius={theme.borderRadius.default}
+            $backgroundColor={theme.boxShadow}
+            $borderRadius={theme.borderRadius.default}
             border={theme.border.background}
           />
-          <Image src={project.image} />
+          <Image
+            $loaded={loaded}
+            src={project.image}
+            onLoad={() => setLoaded(true)}
+          />
         </Section>
       </Container>
-      <Spacer size="xl" />
-      <Spacer size="xl" />
-      <Container>
+      <Spacer size="l" />
+      <Spacer size="l" />
+      <Container className={`${transition || ''}`}>
         <Background
-          backgroundColor={theme.boxShadow}
-          borderRadius={theme.borderRadius.default}
+          $backgroundColor={theme.boxShadow}
+          $borderRadius={theme.borderRadius.default}
           border={theme.border.background}
         />
         <Section>

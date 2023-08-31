@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import { fadeIn } from '../keyframes';
 import { large, small } from '../styles/breakpoints';
+import { useTheme } from '../context/theme';
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -29,10 +30,31 @@ const StyledWrapper = styled.div`
     /* overflow-y: auto;
     overflow-x: visible; */
   }
+
+  .Toastify__toast {
+    border-radius: ${({ $borderRadius }) => $borderRadius};
+    background-color: ${({ $backgroundColor }) => $backgroundColor};
+    color: ${({ color }) => color};
+    border: ${({ border }) => border};
+    font-family: ${({ font }) => font};
+  }
 `;
 
 function Wrapper({ children }) {
-  return <StyledWrapper id="wrapper">{children}</StyledWrapper>;
+  const { theme } = useTheme();
+
+  return (
+    <StyledWrapper
+      id="wrapper"
+      $backgroundColor={theme.card}
+      color={theme.color}
+      border={theme.border.default}
+      $borderRadius={theme.borderRadius.small}
+      font={theme.font}
+    >
+      {children}
+    </StyledWrapper>
+  );
 }
 
 export default Wrapper;

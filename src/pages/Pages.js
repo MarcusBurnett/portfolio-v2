@@ -65,7 +65,7 @@ function Pages() {
         <CSSTransition key={location.key} classNames="page" timeout={500}>
           <Routes location={location}>
             {routes.map(({ path, Component }) => (
-              <Route path={path} element={<Component />} />
+              <Route key={path} path={path} element={<Component />} />
             ))}
             <Route path="*" element={<Navigate to="/about-me" />} />
           </Routes>

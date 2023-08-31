@@ -6,11 +6,10 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { useLocation } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import Textarea from '../components/Textarea';
-import { promiseTimeout } from '../utilities';
 import { useTheme } from '../context/theme';
 import { medium, small } from '../styles/breakpoints';
 import { fadeInAndSlideUp } from '../keyframes';
@@ -22,15 +21,6 @@ const Container = styled.div`
   position: relative;
   opacity: 0;
   animation: 0.6s ${fadeInAndSlideUp} 0.8s ease forwards;
-
-  .Toastify__toast {
-    border-radius: ${({ borderRadius }) => borderRadius};
-    background-color: ${({ backgroundColor }) => backgroundColor};
-    color: ${({ color }) => color};
-    border: ${({ border }) => border};
-    border-radius: ${({ borderRadius }) => borderRadius};
-    font-family: ${({ font }) => font};
-  }
 
   @media screen and (max-width: ${medium}) {
     padding-left: 10px;
@@ -48,13 +38,13 @@ const InputContainer = styled.div`
 `;
 
 const Background = styled.div`
-  background-color: ${({ backgroundColor }) => backgroundColor};
+  background-color: ${({ $backgroundColor }) => $backgroundColor};
   position: absolute;
   right: 2rem;
   top: 5rem;
   width: calc(100% + 1rem);
   bottom: 0px;
-  border-radius: ${({ borderRadius }) => borderRadius};
+  border-radius: ${({ $borderRadius }) => $borderRadius};
   z-index: -1;
   transition: background-color 0.4s ease;
   height: calc(100% - 2rem);
@@ -72,6 +62,10 @@ const ButtonContainer = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
   width: fit-content;
+
+  @media screen and (max-width: ${small}) {
+    width: 100%;
+  }
 `;
 
 const schema = Yup.object().shape({
@@ -98,12 +92,9 @@ function ContactForm() {
     try {
       setSubmitting(true);
 
-      const token = await Promise.race([
-        recaptchaRef.current?.executeAsync(),
-        promiseTimeout(),
-      ]);
+      const recaptchaValue = recaptchaRef.current.getValue();
 
-      if (token && token !== 'timed out') {
+      if (recaptchaValue) {
         await axios({
           method: 'POST',
           url: 'https://formspree.io/f/mbjqdqpw',
@@ -116,7 +107,7 @@ function ContactForm() {
 
         resetForm();
       } else {
-        toast.error('Something went wrong. Please try again', {
+        toast.error('Please verify that you are not a robot', {
           position: toast.POSITION.TOP_CENTER,
         });
       }
@@ -152,16 +143,10 @@ function ContactForm() {
   };
 
   return (
-    <Container
-      backgroundColor={theme.card}
-      color={theme.color}
-      border={theme.border.default}
-      borderRadius={theme.borderRadius.small}
-      font={theme.font}
-    >
+    <Container>
       <Background
-        borderRadius={theme.borderRadius.default}
-        backgroundColor={theme.boxShadow}
+        $borderRadius={theme.borderRadius.default}
+        $backgroundColor={theme.boxShadow}
       />
       <InputContainer>
         <Input
@@ -196,7 +181,6 @@ function ContactForm() {
         <ReCaptchaContainer>
           <ReCAPTCHA
             ref={recaptchaRef}
-            // size="invisible"
             sitekey={process.env.REACT_APP_RECAPTCHA_KEY}
           />
         </ReCaptchaContainer>
@@ -206,7 +190,6 @@ function ContactForm() {
           Send Message
         </Button>
       </ButtonContainer>
-      <ToastContainer />
     </Container>
   );
 }

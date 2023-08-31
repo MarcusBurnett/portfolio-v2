@@ -16,9 +16,9 @@ const StyledCard = styled.div`
   align-items: center;
   box-sizing: border-box;
   transition: all 0.4s ease;
-  border-radius: ${({ borderRadius }) => borderRadius};
+  border-radius: ${({ $borderRadius }) => $borderRadius};
   border: ${({ border }) => border};
-  box-shadow: ${({ boxShadow }) => `-30px 30px 0px 0px ${boxShadow}`};
+  box-shadow: ${({ $boxShadow }) => `-30px 30px 0px 0px ${$boxShadow}`};
 `;
 
 function Card({ children, className, cardClassName, onClick }) {
@@ -30,8 +30,8 @@ function Card({ children, className, cardClassName, onClick }) {
         onClick={onClick}
         className={`card${` ${cardClassName}` || ''}`}
         $backgroundColor={theme.card}
-        boxShadow={theme.boxShadow}
-        borderRadius={theme.borderRadius.default}
+        $boxShadow={theme.boxShadow}
+        $borderRadius={theme.borderRadius.default}
         border={theme.border.default}
       >
         {children}
