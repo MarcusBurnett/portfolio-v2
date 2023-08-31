@@ -173,6 +173,7 @@ function ContactForm() {
         onBlur={handleBlur('message')}
         error={touched.message && errors.message}
         valid={values.message && !errors.message}
+        labelColor={theme.key === 'mint' && theme.backgroundColor}
       />
       {process.env.REACT_APP_RECAPTCHA_KEY && (
         <ReCaptchaContainer>

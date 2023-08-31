@@ -12,6 +12,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   transition: all 0.3s ease;
+  margin: 0.2rem;
 `;
 
 const Line = styled.div`

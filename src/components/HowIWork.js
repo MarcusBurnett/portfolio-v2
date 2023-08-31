@@ -13,11 +13,12 @@ const Container = styled.div`
   flex-direction: column;
   gap: 1.6rem;
   position: relative;
-  margin: 7rem 0 2rem 0;
+  margin: 8rem 0 2rem 0;
   opacity: 0;
   animation: 0.8s ${fadeInAndSlideLeft} 0.6s ease forwards;
 
   @media screen and (max-width: ${small}) {
+    margin-top: 4rem;
     animation: 0.4s ${fadeInAndSlideLeft} 0.4s ease forwards;
   }
 
@@ -99,7 +100,7 @@ const SectionHeader = styled.div`
   display: flex;
   gap: 0.4rem;
   transform: rotate(-90deg);
-  width: 2.2rem;
+  width: 2.4rem;
   height: 100%;
   cursor: pointer;
   letter-spacing: 0.1rem;

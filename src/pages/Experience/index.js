@@ -79,7 +79,6 @@ const Subtitle = styled.h2`
 const QuoteCard = styled(Card)`
   margin-right: 6rem;
   max-width: 100rem;
-  transform: translateY(2rem);
 
   .card.quote {
     opacity: 0;
