@@ -17,8 +17,38 @@ reportWebVitals();
 const container = document.getElementById('app');
 const root = createRoot(container); // createRoot(container!) if you use TypeScript
 
+const articleStructuredData = {
+  __html: JSON.stringify({
+    '@context': 'http://schema.org',
+    '@type': 'Person',
+    name: 'Marcus Burnett',
+    url: 'https://www.marcus-burnett-portfolio.web.app',
+    sameAs: [
+      'https://www.linkedin.com/in/marcus-burnett',
+      'https://github.com/marcusburnett',
+    ],
+    jobTitle: 'Senior Product Designer | Front-End Developer | UX Engineer',
+    description:
+      'I am a passionate senior product designer, front-end developer, and UX engineer with a focus on creating user-centered and visually appealing digital experiences.',
+    image:
+      'https://marcus-burnett-portfolio.web.app/static/media/ProfilePicture.be9f633b2571814bcf7e.png',
+    memberOf: {
+      '@type': 'Organisation',
+      name: 'Sendcloud',
+      url: 'https://www.sendcloud.com',
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': 'https://www.marcus-burnett-portfolio.web.app',
+    },
+  }),
+};
+
 root.render(
   <React.StrictMode>
+    <script type="application/ld+json">
+      {JSON.stringify(articleStructuredData)}
+    </script>
     <AppProviders>
       <GlobalStyles />
       <Typography />
