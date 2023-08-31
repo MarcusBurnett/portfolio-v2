@@ -9,7 +9,7 @@ const StyledCard = styled(Card)`
   height: 16rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  flex-basis: calc(50% - 10px);
+  flex-basis: calc(50% - 1rem);
 
   .card {
     box-shadow: none;
@@ -17,7 +17,7 @@ const StyledCard = styled(Card)`
     align-items: flex-start;
     justify-content: space-between;
     background-color: ${({ theme }) => theme.card};
-    box-shadow: 0px 4px 8px 4px #0000000d;
+    box-shadow: 0 0.4rem 0.8rem 0.4rem #0000000d;
   }
 
   &:hover {
@@ -43,7 +43,7 @@ const Icon = styled.img`
 
 const TitleContainer = styled.div`
   display: flex;
-  gap: 8px;
+  gap: 0.8rem;
   align-items: center;
 `;
 

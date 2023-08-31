@@ -7,7 +7,7 @@ const Container = styled.div`
   height: 1.8rem;
   background-color: ${({ $backgroundColor }) => $backgroundColor};
   border-radius: ${({ $borderRadius }) => $borderRadius};
-  border: ${({ $borderColor }) => `1px solid ${$borderColor}`};
+  border: ${({ $borderColor }) => `0.1rem solid ${$borderColor}`};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,8 +15,8 @@ const Container = styled.div`
 `;
 
 const Line = styled.div`
-  width: 8px;
-  height: 1px;
+  width: 0.8rem;
+  height: 0.1rem;
   background-color: ${({ $backgroundColor }) => $backgroundColor};
   position: absolute;
   transition: all 0.3s ease;

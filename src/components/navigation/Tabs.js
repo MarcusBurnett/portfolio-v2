@@ -6,22 +6,21 @@ import { small } from '../../styles/breakpoints';
 import { useWindowDimensions, useTabs } from '../../hooks';
 import { fadeIn } from '../../keyframes';
 import { useTheme } from '../../context/theme';
-// import ToolTip from '../ToolTip';
 
 const StyledTabs = styled.ul`
   opacity: 0;
   animation: 0.8s ${fadeIn} ease forwards;
   width: ${({ $collapsed }) =>
-    $collapsed ? 'calc(100% + 10px)' : 'calc(100% + 50px)'};
-  margin-left: ${({ $collapsed }) => ($collapsed ? '-20px' : '-50px')};
-  gap: 5px;
+    $collapsed ? 'calc(100% + 1rem)' : 'calc(100% + 5rem)'};
+  margin-left: ${({ $collapsed }) => ($collapsed ? '-2rem' : '-5rem')};
+  gap: 0.5rem;
   display: flex;
   flex-direction: column;
   background-color: ${({ $backgroundColor }) => $backgroundColor};
-  padding: 10px;
+  padding: 1rem;
   border-radius: ${({ $borderRadius }) => $borderRadius};
   border: ${({ border }) => border};
-  box-shadow: 0px 4px 4px 0px #0000000d;
+  box-shadow: 0 0.4rem 0.4rem 0 #0000000d;
   box-sizing: border-box;
   transition: all 0.4s ease;
   z-index: 10;
@@ -30,34 +29,34 @@ const StyledTabs = styled.ul`
   @media screen and (max-width: ${small}) {
     width: 100%;
     position: fixed;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    padding: 10px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
     display: flex;
     margin-left: 0;
     height: 7rem;
     flex-direction: row;
     align-items: flex-end;
-    gap: 4px;
-    box-shadow: 0px 4px 8px 0px #0000001a;
+    gap: 0.4rem;
+    box-shadow: 0 0.4rem 0.8rem 0 #0000001a;
   }
 `;
 
 const Indicator = styled.div`
   position: absolute;
   width: ${({ selected, $collapsed }) =>
-    (selected && $collapsed && '4px') || (selected && '8px') || '0px'};
+    (selected && $collapsed && '0.4rem') || (selected && '0.8rem') || '0'};
   left: 0;
-  top: ${({ $collapsed }) => ($collapsed ? '12px' : '0')};
-  bottom: ${({ $collapsed }) => ($collapsed ? '12px' : '0')};
+  top: ${({ $collapsed }) => ($collapsed ? '1.2rem' : '0')};
+  bottom: ${({ $collapsed }) => ($collapsed ? '1.2rem' : '0')};
   background-color: ${({ $backgroundColor }) => $backgroundColor};
   border-radius: ${({ $borderRadius }) => $borderRadius};
   transition: all 0.4s ease;
 
   @media screen and (max-width: ${small}) {
     width: 100%;
-    height: ${({ selected }) => (selected ? '5px' : '0px')};
+    height: ${({ selected }) => (selected ? '0.5rem' : '0')};
     top: auto;
     right: 0;
   }
@@ -68,11 +67,11 @@ const Tab = styled.li`
   transform: ${({ selected, $collapsed }) =>
     selected ? `translate(${$collapsed ? '0.5rem' : '1rem'})` : 'translate(0)'};
   transition: all 0.4s ease;
-  margin-right: 1px;
+  margin-right: 0.1rem;
   width: ${({ selected, $collapsed }) =>
     (selected && $collapsed && '140%') || (selected && '105%') || '100%'};
   margin-left: ${({ selected, $collapsed }) =>
-    !selected && $collapsed && '-5px'};
+    !selected && $collapsed && '-0.5rem'};
 
   @media screen and (max-width: ${small}) {
     width: 100%;
@@ -105,7 +104,7 @@ const StyledCard = styled(Card)`
   .background {
     border-color: ${({ colors, showBackground }) =>
       (showBackground && colors?.backgroundBorder) || 'transparent'};
-    border-width: 1px;
+    border-width: 0.1rem;
 
     @media screen and (max-width: ${small}) {
       border-width: 0;
@@ -116,20 +115,19 @@ const StyledCard = styled(Card)`
     display: flex;
     background-color: ${({ $backgroundColor }) => $backgroundColor};
     box-shadow: ${({ selected, $displayShadow }) =>
-      selected && $displayShadow ? '0px 4px 8px 0px #0000000D' : 'none'};
+      selected && $displayShadow ? '0 0.4rem 0.8rem 0 #0000000D' : 'none'};
     transition: all 0.4s ease;
     padding: 0;
     border-radius: ${({ $borderRadius }) => $borderRadius};
     border: ${({ border }) => border};
     align-items: flex-start;
     justify-content: center;
-    /* overflow: ${({ $collapsed }) => !$collapsed && 'hidden'}; */
     overflow: hidden;
     width: 100%;
 
     @media screen and (max-width: ${small}) {
       box-shadow: ${({ selected }) =>
-        selected ? '0px -4px 8px 0px #0000000D' : 'none'};
+        selected ? '0 -0.4rem 0.8rem 0 #0000000D' : 'none'};
       flex-direction: column;
       overflow: hidden;
     }
@@ -137,7 +135,7 @@ const StyledCard = styled(Card)`
     &:hover {
       background-color: ${({ hoverBackground }) => hoverBackground};
       box-shadow: ${({ $displayShadow }) =>
-        $displayShadow && '0px 4px 8px 0px #0000000d'};
+        $displayShadow && '0 0.4rem 0.8rem 0 #0000000d'};
       border: ${({ borderHover }) => borderHover};
 
       .tooltip {
@@ -152,11 +150,11 @@ const StyledCard = styled(Card)`
       transition: opacity 0.1s ease;
 
       &::before {
-        border-top: 5px solid transparent;
-        border-bottom: 5px solid transparent;
-        border-right: 5px solid
+        border-top: 0.5rem solid transparent;
+        border-bottom: 0.5rem solid transparent;
+        border-right: 0.5rem solid
           ${({ tooltipBackgroundColor }) => tooltipBackgroundColor};
-        left: -8px;
+        left: -0.8rem;
         top: auto;
       }
     }
@@ -171,7 +169,7 @@ const Icon = styled.img`
 
   @media screen and (max-width: ${small}) {
     margin-right: 0;
-    margin-bottom: 4px;
+    margin-bottom: 0.4rem;
   }
 `;
 
@@ -205,22 +203,17 @@ const Title = styled.span`
   overflow: hidden;
   transition: all 0.4s ease;
   white-space: nowrap;
-  margin-top: 2px;
+  margin-top: 0.2rem;
 `;
 
 function Tabs({ collapsed }) {
-  const { height: windowHeight } = useWindowDimensions();
   const { tabs } = useTabs();
   const { theme } = useTheme();
   const { width } = useWindowDimensions();
   const isMobile = width <= Number.parseInt(small.replace('px', ''), 10);
 
   const handleOnClick = () => {
-    if (!isMobile) {
-      setTimeout(() => {
-        window.scrollTo(0, windowHeight);
-      }, 100);
-    }
+    window.scrollTo(0, 0);
   };
 
   return (

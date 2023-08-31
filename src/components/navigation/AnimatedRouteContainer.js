@@ -7,9 +7,6 @@ const StyledAnimatedRouteContainer = styled(Routes)`
   width: 100%;
   height: 100%;
   position: relative;
-  /* background-color: ${({ page }) => page}; */
-  /* transition: background-color 0.4s ease; */
-  /* overflow: hidden; */
 `;
 
 function AnimatedRouteContainer({ children }) {

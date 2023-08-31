@@ -13,7 +13,7 @@ const StyledContent = styled.div`
   position: relative;
   animation: 1s ${fadeIn} ease forwards;
   overflow: hidden;
-  margin-left: 20px;
+  margin-left: 2rem;
   min-height: 100vh;
   width: 100%;
   overflow: auto;
@@ -29,12 +29,12 @@ const StyledContent = styled.div`
 
   .page-enter {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(-2rem);
   }
 
   .page-enter-active {
     opacity: 1;
-    transform: translateY(0px);
+    transform: translateY(0);
     transition: opacity 500ms, transform 500ms;
     position: absolute;
     left: 0;
@@ -43,12 +43,12 @@ const StyledContent = styled.div`
 
   .page-exit {
     opacity: 1;
-    transform: translateY(0px);
+    transform: translateY(0);
   }
 
   .page-exit-active {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(-2rem);
     transition: opacity 500ms, transform 500ms;
     position: absolute;
     left: 0;

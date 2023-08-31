@@ -4,8 +4,8 @@ import chrevronIcon from '../images/Icons/Light/Chevron.svg';
 import { useTheme } from '../context/theme';
 
 const Arrow = styled.img`
-  width: 40px;
-  height: 40px;
+  width: 4rem;
+  height: 4rem;
   transform: ${({ side }) =>
     ` scale(1) rotate(${side === 'left' ? '0deg' : '180deg'})`};
   transition: transform 0.1s ease;
@@ -18,7 +18,7 @@ const ArrowButton = styled.div`
   align-items: center;
   position: absolute;
   top: 0;
-  padding: 10px;
+  padding: 1rem;
   height: 100%;
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
 `;

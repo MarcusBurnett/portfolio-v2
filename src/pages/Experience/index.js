@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components/macro';
-// import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import projects from '../../data/projects';
-// import Project from './Project';
-// import AnimatedRoute from '../../components/navigation/AnimatedRoute';
 import { medium, small } from '../../styles/breakpoints';
-// import AnimatedRouteContainer from '../../components/navigation/AnimatedRouteContainer';
-// import Project from './Project';
 import Card from '../../components/Card';
 import { useTheme } from '../../context/theme';
 import Spacer from '../../components/Spacer';
@@ -15,44 +10,23 @@ import ProjectList from '../../components/ProjectList';
 import Project from './Project';
 import { fadeInAndSlideUp } from '../../keyframes';
 
-// const Container = styled.div`
-//   width: 100%;
-//   height: 100%;
-//   display: flex;
-//   gap: 20px;
-//   overflow: auto;
-//   position: relative;
-
-//   @media screen and (max-width: ${large}) {
-//     flex-direction: column;
-//   }
-
-//   @media screen and (max-width: ${small}) {
-//     margin-bottom: 100px;
-//     gap: 40px;
-//     padding-top: 12rem;
-//   }
-// `;
-
 const Container = styled.div`
   width: 100%;
   height: 100vh;
-  /* overflow: auto; */
   display: flex;
   flex-direction: column;
-  padding: 40px 0 4px 40px;
-  gap: 20px;
+  padding: 4rem 0 0.4rem 4rem;
+  gap: 2rem;
   position: relative;
 
   @media screen and (max-width: ${medium}) {
     min-height: 100vh;
     height: auto;
-    padding: 40px 0;
+    padding: 4rem 0;
   }
 
   @media screen and (max-width: ${small}) {
-    /* margin-bottom: 20px; */
-    gap: 40px;
+    gap: 4rem;
     padding-top: 12rem;
   }
 `;
@@ -65,7 +39,6 @@ const ProjectContainer = styled.div`
   animation: 0.8s ${fadeInAndSlideUp} 1s ease forwards;
 
   @media screen and (max-width: ${small}) {
-    /* animation: none; */
     opacity: 1;
   }
 `;
@@ -73,13 +46,12 @@ const ProjectContainer = styled.div`
 const TitleContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0.4rem;
   opacity: 0;
   animation: 0.6s ${fadeInAndSlideUp} 0.4s ease forwards;
 
   @media screen and (max-width: ${small}) {
-    padding: 20px 40px 0 20px;
-    /* animation: none; */
+    padding: 2rem 4rem 0 2rem;
   }
 `;
 
@@ -105,13 +77,13 @@ const Subtitle = styled.h2`
 `;
 
 const QuoteCard = styled(Card)`
-  margin-right: 60px;
-  max-width: 1000px;
-  transform: translateY(20px);
+  margin-right: 6rem;
+  max-width: 100rem;
+  transform: translateY(2rem);
 
   .card.quote {
     opacity: 0;
-    box-shadow: ${({ boxShadow }) => `30px 60px 0px 0px ${boxShadow}`};
+    box-shadow: ${({ boxShadow }) => `3rem 6rem 0 0 ${boxShadow}`};
     padding: 2rem 3rem;
     animation: 0.6s ${fadeInAndSlideUp} 0.8s ease forwards;
 
@@ -121,21 +93,21 @@ const QuoteCard = styled(Card)`
     }
 
     @media screen and (max-width: ${medium}) {
-      box-shadow: ${({ boxShadow }) => `20px 80px 0px 0px ${boxShadow}`};
+      box-shadow: ${({ boxShadow }) => `2rem 8rem 0 0 ${boxShadow}`};
     }
   }
 
   @media screen and (max-width: ${small}) {
-    margin-right: 10px;
-    padding: 0 20px;
+    margin-right: 1rem;
+    padding: 0 2rem;
   }
 `;
 
 const ExternalLinkIcon = styled.img`
   width: 1.4rem;
   height: 1.4rem;
-  margin-left: 8px;
-  margin-bottom: 2px;
+  margin-left: 0.8rem;
+  margin-bottom: 0.2rem;
   object-fit: contain;
 `;
 
@@ -147,7 +119,7 @@ const Quoted = styled.a`
   font-weight: 700;
   text-decoration: underline;
   text-align: right;
-  padding-left: 20px;
+  padding-left: 2rem;
   color: ${({ color }) => color};
 
   @media screen and (max-width: ${medium}) {
@@ -160,7 +132,7 @@ const H3 = styled.h3`
   font-size: 2rem;
 
   @media screen and (max-width: ${small}) {
-    margin: 0 20px;
+    margin: 0 2rem;
     font-size: 2.2rem;
   }
 `;

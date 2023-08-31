@@ -17,16 +17,16 @@ const StyledTooltip = styled.div`
     position: absolute;
     width: 0;
     height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-bottom: 5px solid ${({ $backgroundColor }) => $backgroundColor};
-    top: -4px;
+    border-left: 0.5rem solid transparent;
+    border-right: 0.5rem solid transparent;
+    border-bottom: 0.5rem solid ${({ $backgroundColor }) => $backgroundColor};
+    top: -0.4rem;
   }
 `;
 
 const Text = styled.span`
   font-size: 1.1rem;
-  margin-top: 2px;
+  margin-top: 0.2rem;
   text-align: center;
   font-weight: 700;
   color: ${({ color }) => color};

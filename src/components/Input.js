@@ -47,7 +47,7 @@ const LabelContainer = styled.div`
   padding-right: 0.5rem;
   margin-left: -0.1rem;
   font-size: 1.3rem;
-  border-radius: 3px 3px 3px 0;
+  border-radius: 0.3rem 0.3rem 0.3rem 0;
   transition: background-color 0.4s ease;
 `;
 

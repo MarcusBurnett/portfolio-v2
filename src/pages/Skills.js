@@ -1,12 +1,11 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-// import AnimatedRoute from '../components/navigation/AnimatedRoute';
 import { large, xsmall } from '../styles/breakpoints';
 
 const Container = styled.div`
   width: 100%;
   min-height: 100%;
-  max-height: 600px;
+  max-height: 60rem;
   display: flex;
   flex: 1;
   overflow: hidden;
@@ -16,7 +15,7 @@ const Container = styled.div`
   }
 
   @media screen and (max-width: ${xsmall}) {
-    padding-top: 90px;
+    padding-top: 9rem;
     flex-direction: column;
   }
 `;

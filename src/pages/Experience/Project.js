@@ -11,25 +11,25 @@ import Links from '../../components/Links';
 const StyledProject = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 20px 40px 40px 0;
-  margin-bottom: 40px;
+  padding: 2rem 4rem 4rem 0;
+  margin-bottom: 4rem;
   opacity: 0;
   animation: 0.8s ${fadeInAndSlideUp} 1s ease forwards;
 
   .in {
-    transform: translateY(0px);
+    transform: translateY(0);
     transition: all 0.4s 0.2s ease;
     opacity: 1;
   }
 
   .out {
-    transform: translateY(30px);
+    transform: translateY(3rem);
     opacity: 0;
   }
 
   @media screen and (max-width: ${medium}) {
-    padding: 0 20px;
-    margin-bottom: 100px;
+    padding: 0 2rem;
+    margin-bottom: 10rem;
   }
 
   @media screen and (max-width: ${small}) {
@@ -41,12 +41,12 @@ const StyledProject = styled.div`
 const Container = styled.div`
   display: flex;
   width: 100%;
-  gap: 40px;
+  gap: 4rem;
   position: relative;
   flex-wrap: wrap;
   transition: all 0.4s ease;
   opacity: 0;
-  transform: translateY(0px);
+  transform: translateY(0);
 
   @media screen and (max-width: ${medium}) {
     flex-direction: column;
@@ -59,7 +59,7 @@ const Section = styled.div`
   flex: 1;
   align-items: flex-start;
   position: relative;
-  gap: 20px;
+  gap: 2rem;
   height: fit-content;
   flex-wrap: wrap;
 `;
@@ -81,11 +81,10 @@ const Image = styled.img`
   visibility: ${({ $loaded }) => ($loaded ? 'visible' : 'hidden')};
 
   &:hover {
-    transform: perspective(50px) rotateY(-0.2deg) rotateX(0.1deg) scale(1.05);
+    transform: perspective(5rem) rotateY(-0.2deg) rotateX(0.1deg) scale(1.05);
   }
 
   @media screen and (max-width: ${medium}) {
-    /* width: 100%; */
     min-width: 0;
   }
 `;
@@ -138,7 +137,7 @@ const ToolImage = styled.img`
 
 const Tools = styled.div`
   display: flex;
-  gap: 15px;
+  gap: 1.5rem;
   width: 100%;
   max-height: 5rem;
 
@@ -176,8 +175,8 @@ const List = styled.div`
   display: flex;
   flex-direction: column;
   list-style-type: disc;
-  gap: 4px;
-  margin-left: 10px;
+  gap: 0.4rem;
+  margin-left: 1rem;
 `;
 
 const Description = styled.p`
@@ -209,13 +208,13 @@ const Achievements = styled(Card)`
 `;
 
 const Lessons = styled.div`
-  padding: 20px;
-  margin: 40px 40px 0 0;
+  padding: 2rem;
+  margin: 4rem 4rem 0 0;
   color: ${({ color }) => color};
 
   @media screen and (max-width: ${medium}) {
-    margin: 0 40px 0 0;
-    padding: 0 20px;
+    margin: 0 4rem 0 0;
+    padding: 0 2rem;
   }
 `;
 

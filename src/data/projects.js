@@ -82,11 +82,11 @@ export default [
         testing;
         <br />
         <br />
-        <ul style={{ listStyleType: 'disc', marginLeft: '10px' }}>
+        <ul style={{ listStyleType: 'disc', marginLeft: '1rem' }}>
           <li>
             <span>Time to ship first parcel:</span>
             <br />
-            <span style={{ marginLeft: '10px' }}>
+            <span style={{ marginLeft: '1rem' }}>
               From <strong>54 hrs</strong> to just <strong>24 hrs</strong>
             </span>
           </li>
@@ -94,7 +94,7 @@ export default [
           <li>
             <span>Time to add a payment method:</span>
             <br />
-            <span style={{ marginLeft: '10px' }}>
+            <span style={{ marginLeft: '1rem' }}>
               From <strong>7 hrs</strong> to just <strong>13 mins</strong>
             </span>
           </li>
@@ -102,7 +102,7 @@ export default [
           <li>
             <span>Time to add a brand:</span>
             <br />
-            <span style={{ marginLeft: '10px' }}>
+            <span style={{ marginLeft: '1rem' }}>
               From <strong>66 hrs</strong> to just <strong>21 hrs</strong>
             </span>
           </li>

@@ -6,13 +6,12 @@ import { medium, small } from '../styles/breakpoints';
 
 const StyledProjectList = styled.div`
   display: flex;
-  gap: 20px;
-  max-width: 1000px;
+  gap: 2rem;
+  max-width: 100rem;
   position: relative;
   width: 100%;
-  /* overflow-x: auto; */
   overflow: visible;
-  margin-left: -20px;
+  margin-left: -2rem;
 
   @media screen and (max-width: ${medium}) {
     margin-left: 0;
@@ -21,12 +20,11 @@ const StyledProjectList = styled.div`
 
 const Container = styled.div`
   display: flex;
-  gap: 10px;
-  max-width: 1000px;
+  gap: 1rem;
+  max-width: 100rem;
   padding: 0 2rem 4rem 3rem;
-  /* margin-bottom: 60px; */
   position: relative;
-  width: calc(100% + 40px);
+  width: calc(100% + 4rem);
   overflow-x: auto;
   overscroll-behavior: auto;
 
@@ -39,13 +37,13 @@ const Container = styled.div`
   scrollbar-width: none; /* Firefox */
 
   @media screen and (max-width: ${medium}) {
-    gap: 20px;
+    gap: 2rem;
   }
 `;
 
 const Project = styled.img`
   border-radius: ${({ $borderRadius }) => $borderRadius};
-  transform: ${({ selected }) => selected && 'scale(1.1) translateY(5px)'};
+  transform: ${({ selected }) => selected && 'scale(1.1) translateY(0.5rem)'};
   transition: all 0.4s ease;
   width: 80%;
   min-width: 7rem;
@@ -55,7 +53,7 @@ const Project = styled.img`
 
   &:hover {
     transform: ${({ selected }) =>
-      selected ? 'scale(1.1) translateY(5px)' : 'scale(1.08)'};
+      selected ? 'scale(1.1) translateY(0.5rem)' : 'scale(1.08)'};
   }
 
   @media screen and (max-width: ${small}) {
@@ -64,13 +62,13 @@ const Project = styled.img`
 `;
 
 const Indicator = styled.div`
-  width: 40px;
-  height: 5px;
+  width: 4rem;
+  height: 0.5rem;
   border-radius: ${({ $borderRadius }) => $borderRadius};
   background-color: ${({ $backgroundColor }) => $backgroundColor};
   opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
   position: absolute;
-  bottom: -30px;
+  bottom: -3rem;
   transition: all 0.4s ease;
 `;
 

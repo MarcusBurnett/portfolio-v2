@@ -18,7 +18,7 @@ const StyledCard = styled.div`
   transition: all 0.4s ease;
   border-radius: ${({ $borderRadius }) => $borderRadius};
   border: ${({ border }) => border};
-  box-shadow: ${({ $boxShadow }) => `-30px 30px 0px 0px ${$boxShadow}`};
+  box-shadow: ${({ $boxShadow }) => `-3rem 3rem 0 0 ${$boxShadow}`};
 `;
 
 function Card({ children, className, cardClassName, onClick }) {

@@ -2,7 +2,7 @@ import { keyframes } from 'styled-components/macro';
 
 export default keyframes`
 0% {
-	transform: translateY(20px);
+	transform: translateY(2rem);
   opacity: 0
 }
 100% {

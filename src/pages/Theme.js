@@ -10,18 +10,18 @@ const Container = styled.div`
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 40px;
-  gap: 32px;
+  padding: 4rem;
+  gap: 3.2rem;
   position: relative;
 
   @media screen and (max-width: ${medium}) {
     min-height: 100vh;
-    padding: 70px 20px 40px;
+    padding: 7rem 2rem 4rem;
   }
 
   @media screen and (max-width: ${small}) {
-    margin-bottom: 100px;
-    gap: 40px;
+    margin-bottom: 10rem;
+    gap: 4rem;
     padding-top: 12rem;
   }
 `;
@@ -29,7 +29,7 @@ const Container = styled.div`
 const TitleContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0.4rem;
   opacity: 0;
   animation: 0.6s ${fadeInAndSlideUp} 0.4s ease forwards;
 `;
@@ -54,7 +54,7 @@ const Subtitle = styled.h2`
 
 const Themes = styled.div`
   display: flex;
-  gap: 20px;
+  gap: 2rem;
   width: 100%;
   position: relative;
   flex-wrap: wrap;
@@ -67,9 +67,9 @@ const Background = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
-  top: 40px;
-  right: 40px;
-  bottom: 0px;
+  top: 4rem;
+  right: 4rem;
+  bottom: 0;
   border-radius: ${({ $borderRadius }) => $borderRadius};
   border: ${({ border }) => border};
   z-index: -1;
@@ -78,7 +78,7 @@ const Background = styled.div`
   animation: 1.8s ${fadeInAndSlideUp} 0.6s ease forwards;
 
   @media screen and (max-width: ${small}) {
-    right: 20px;
+    right: 2rem;
     width: 110%;
   }
 `;

@@ -25,10 +25,7 @@ const StyledWrapper = styled.div`
   }
 
   nav {
-    /* height: 100vh; */
     min-height: fit-content;
-    /* overflow-y: auto;
-    overflow-x: visible; */
   }
 
   .Toastify__toast {

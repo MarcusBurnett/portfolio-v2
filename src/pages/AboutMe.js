@@ -3,7 +3,6 @@ import styled from 'styled-components/macro';
 import { large, medium, small, xsmall } from '../styles/breakpoints';
 import Card from '../components/Card';
 import Countdown from '../components/Countdown';
-// import Spacer from '../components/Spacer';
 import Story from '../components/Story';
 import Gallery from '../components/Gallery';
 import { fadeInAndSlideUp } from '../keyframes';
@@ -12,7 +11,7 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  gap: 20px;
+  gap: 2rem;
   overflow: auto;
   position: relative;
 
@@ -21,8 +20,8 @@ const Container = styled.div`
   }
 
   @media screen and (max-width: ${small}) {
-    margin-bottom: 100px;
-    gap: 40px;
+    margin-bottom: 10rem;
+    gap: 4rem;
     padding-top: 12rem;
   }
 `;
@@ -31,8 +30,8 @@ const Left = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: 40px 40px 0 40px;
+  gap: 2rem;
+  padding: 4rem 4rem 0 4rem;
   width: 49%;
   opacity: 0;
   animation: 0.6s ${fadeInAndSlideUp} 0.4s ease forwards;
@@ -43,8 +42,8 @@ const Left = styled.div`
 
   @media screen and (max-width: ${small}) {
     width: 100%;
-    padding: 0 20px 0 20px;
-    gap: 40px;
+    padding: 0 2rem 0 2rem;
+    gap: 4rem;
   }
 `;
 
@@ -75,7 +74,6 @@ const DetailsItem = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  /* align-items: flex-end; */
 
   @media screen and (max-width: ${xsmall}) {
     margin: 0.5rem 0;
@@ -87,10 +85,10 @@ const DetailsList = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  gap: 8px;
+  gap: 0.8rem;
 
   @media screen and (max-width: ${medium}) {
-    gap: 4px;
+    gap: 0.4rem;
   }
 `;
 
@@ -131,12 +129,8 @@ const Overview = styled(Card)`
 const TitleContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0.4rem;
 `;
-
-// const H3 = styled.h3`
-//   font-size: 1.8rem;
-// `;
 
 const detailsListItems = [
   { label: 'Age', value: <Countdown date={new Date(1995, 9, 20)} /> },
@@ -164,8 +158,6 @@ function AboutMe() {
           </Subtitle>
         </TitleContainer>
         <Overview>
-          {/* <H3>Overview </H3>
-          <Spacer size="s" /> */}
           <DetailsList>
             {detailsListItems?.map((item) => (
               <Fragment key={item.label}>

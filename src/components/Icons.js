@@ -11,7 +11,7 @@ const StyledIcons = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 8px;
+  gap: 0.8rem;
 `;
 
 const IconsItem = styled.img`

@@ -15,7 +15,7 @@ const StyledStory = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 20px;
+  gap: 2rem;
 
   @media screen and (max-width: ${large}) {
     flex: auto;
@@ -24,9 +24,6 @@ const StyledStory = styled.div`
   }
 
   @media screen and (max-width: ${small}) {
-    /* flex-direction: row;
-    align-items: flex-start;
-    width: 100vw; */
     overflow: hidden;
   }
 `;
@@ -63,8 +60,8 @@ const Background = styled.div`
   position: fixed;
   width: 32vw;
   top: ${({ $scrollY }) => `${Math.max(-40, 125 - $scrollY / 2)}px`};
-  right: 90px;
-  bottom: 0px;
+  right: 9rem;
+  bottom: 0;
   border-radius: ${({ $borderRadius }) => $borderRadius};
   border: ${({ border }) => border};
   z-index: -1;
@@ -78,19 +75,19 @@ const Background = styled.div`
   @media screen and (max-width: ${large}) {
     position: absolute;
     width: 85%;
-    right: 80px;
-    top: 160px;
+    right: 8rem;
+    top: 16rem;
   }
 
   @media screen and (max-width: ${medium}) {
-    right: 80px;
+    right: 8rem;
     width: 80%;
   }
 
   @media screen and (max-width: ${small}) {
-    top: 100px;
-    right: 50px;
-    left: 10px;
+    top: 10rem;
+    right: 5rem;
+    left: 1rem;
     width: auto;
   }
 `;
@@ -101,32 +98,28 @@ const List = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 20px;
-  /* overflow: auto; */
-  padding: 40px 100px 40px 40px;
+  gap: 2rem;
+  padding: 4rem 10rem 4rem 4rem;
   opacity: 0;
   animation: 0.8s ${fadeInAndSlideLeft} 1s ease forwards;
 
   @media screen and (max-width: ${large}) {
-    padding: 40px 80px 40px 40px;
+    padding: 4rem 8rem 4rem 4rem;
     flex: auto;
   }
 
   @media screen and (max-width: ${small}) {
-    padding: 0 30px 0 30px;
+    padding: 0 3rem 0 3rem;
   }
 `;
 
 const Title = styled.h2`
-  margin-right: -50px;
+  margin-right: -5rem;
   transform: ${({ $scrollY }) =>
     `scale(${Math.max(0, (200 - $scrollY) / 200)})`};
   transform-origin: right;
 
   @media screen and (max-width: ${large}) {
-    /* position: sticky;
-    left: 0;
-    top: 0; */
     transform: none;
     margin-right: 0;
     font-size: 2.4rem;

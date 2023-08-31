@@ -2,9 +2,9 @@ import styled from 'styled-components/macro';
 import loadingSpinner from '../images/Icons/Light/icon-loading-spinner.svg';
 
 const sizes = {
-  small: '20px',
-  medium: '30px',
-  large: '40px',
+  small: '2rem',
+  medium: '3rem',
+  large: '4rem',
 };
 
 const Spinner = styled.div`

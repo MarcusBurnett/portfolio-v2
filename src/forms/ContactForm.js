@@ -17,20 +17,20 @@ import { fadeInAndSlideUp } from '../keyframes';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 2rem;
   position: relative;
   opacity: 0;
   animation: 0.6s ${fadeInAndSlideUp} 0.8s ease forwards;
 
   @media screen and (max-width: ${medium}) {
-    padding-left: 10px;
+    padding-left: 1rem;
   }
 `;
 
 const InputContainer = styled.div`
   display: flex;
   width: 100%;
-  gap: 20px;
+  gap: 2rem;
 
   @media screen and (max-width: ${medium}) {
     flex-direction: column;
@@ -43,7 +43,7 @@ const Background = styled.div`
   right: 2rem;
   top: 5rem;
   width: calc(100% + 1rem);
-  bottom: 0px;
+  bottom: 0;
   border-radius: ${({ $borderRadius }) => $borderRadius};
   z-index: -1;
   transition: background-color 0.4s ease;
@@ -52,7 +52,7 @@ const Background = styled.div`
   animation: 1.8s ${fadeInAndSlideUp} 0.6s ease forwards;
 
   @media screen and (max-width: ${small}) {
-    right: 20px;
+    right: 2rem;
     width: calc(100% - 1rem);
   }
 `;
@@ -77,10 +77,7 @@ const schema = Yup.object().shape({
   message: Yup.string().trim().required('Please enter your message.'),
 });
 
-const ReCaptchaContainer = styled.div`
-  /* display: none; */
-  /* position: absolute; */
-`;
+const ReCaptchaContainer = styled.div``;
 
 function ContactForm() {
   const [submitting, setSubmitting] = useState(false);

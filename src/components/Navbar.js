@@ -13,10 +13,10 @@ import { fadeInAndSlideRight } from '../keyframes';
 
 const StyledNavbar = styled.nav`
   padding: ${({ $collapsed }) =>
-    $collapsed ? '10px 10px 30px 25px' : '10px 10px 30px 45px'};
+    $collapsed ? '1rem 1rem 3rem 2.5rem' : '1rem 1rem 3rem 4.5rem'};
   width: 25%;
-  min-width: ${({ $collapsed }) => ($collapsed ? '10rem' : '260px')};
-  max-width: ${({ $collapsed }) => ($collapsed ? '10rem' : '300px')};
+  min-width: ${({ $collapsed }) => ($collapsed ? '10rem' : '26rem')};
+  max-width: ${({ $collapsed }) => ($collapsed ? '10rem' : '30rem')};
   position: relative;
   z-index: 2;
   display: flex;
@@ -45,7 +45,7 @@ const StyledCard = styled(Card)`
   transition: all 0.4s ease;
 
   .card {
-    gap: ${({ $collapsed }) => ($collapsed ? '12px' : '16px')};
+    gap: ${({ $collapsed }) => ($collapsed ? '1.2rem' : '1.6rem')};
     width: 100%;
     transition: all 0.4s ease;
   }
@@ -56,8 +56,8 @@ const StyledCard = styled(Card)`
       $collapsed ? '1rem 1rem 2rem' : '2rem 3rem'};
     box-shadow: ${({ $collapsed, $boxShadow }) =>
       $collapsed
-        ? `-20px 20px 0px 0px ${$boxShadow}`
-        : `-35px 20px 0px 0px ${$boxShadow}`};
+        ? `-2rem 2rem 0 0 ${$boxShadow}`
+        : `-3.5rem 2rem 0 0 ${$boxShadow}`};
     align-items: center;
     border-radius: ${({ $collapsed, $borderRadius }) =>
       $collapsed ? $borderRadius : $borderRadius};
@@ -85,8 +85,7 @@ const SubHeader = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  gap: 4px;
+  gap: 0.4rem;
 
   h2 {
     font-size: 1.2rem;
@@ -111,7 +110,7 @@ const HeaderContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: ${({ $collapsed }) => ($collapsed ? 'flex-start' : 'center')};
-  gap: 8px;
+  gap: 0.8rem;
   min-width: ${({ $collapsed }) => ($collapsed ? '5rem' : '18rem')};
   width: ${({ $collapsed }) => ($collapsed ? '5rem' : '18rem')};
   transition: all 0.4s ease;
@@ -128,7 +127,7 @@ const HeaderContent = styled.div`
     h1 {
       font-size: 2rem;
       text-align: left;
-      margin-top: 6px;
+      margin-top: 0.6rem;
       line-height: 2.2rem;
     }
   }
@@ -138,7 +137,7 @@ const HeaderTextContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 0.4rem;
   height: ${({ $collapsed }) => ($collapsed ? '0rem' : '6.68rem')};
   opacity: ${({ $collapsed }) => ($collapsed ? '0' : '1')};
   transform: ${({ $collapsed }) => ($collapsed ? 'scale(0)' : 'scale(1)')};
@@ -149,7 +148,7 @@ const HeaderTextContainer = styled.div`
 
   @media screen and (max-width: ${small}) {
     align-items: flex-start;
-    gap: 2px;
+    gap: 0.2rem;
     flex: 1;
   }
 `;
@@ -158,7 +157,7 @@ const StyledHeader = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: ${({ $collapsed }) => ($collapsed ? '10px' : '15px')};
+  gap: ${({ $collapsed }) => ($collapsed ? '1rem' : '1.5rem')};
   transition: all 0.4s ease;
   z-index: 11;
 
@@ -173,13 +172,14 @@ const MobileMenu = styled.div`
   height: ${({ $menuOpen }) => ($menuOpen ? '25.4rem' : '4.8rem')};
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0.4rem;
   background-color: ${({ $menuOpen, $backgroundColor }) =>
     $menuOpen ? $backgroundColor : 'transparent'};
-  box-shadow: ${({ $menuOpen }) => $menuOpen && '-2px 8px 8px 0px #0000001a'};
+  box-shadow: ${({ $menuOpen }) =>
+    $menuOpen && '-0.2rem 0.8rem 0.8rem 0 #0000001a'};
   border-radius: ${({ $borderRadius }) => $borderRadius};
   align-items: center;
-  padding: 2px 4px 4px 4px;
+  padding: 0.2rem 0.4rem 0.4rem 0.4rem;
   overflow: hidden;
   transition: all 0.3s ease;
   border: ${({ border }) => border};
@@ -195,15 +195,15 @@ const CollapsedMenu = styled.div`
   height: 100%;
   min-width: ${({ $menuOpen }) => ($menuOpen ? '25.4rem' : '4.8rem')};
   display: flex;
-  gap: 12px;
+  gap: 1.2rem;
   background-color: ${({ $menuOpen, $backgroundColor }) =>
     $menuOpen ? $backgroundColor : 'transparent'};
-  box-shadow: ${({ $menuOpen }) => $menuOpen && '-2px 8px 8px 0px #0000001a'};
+  box-shadow: ${({ $menuOpen }) =>
+    $menuOpen && '-0.2rem 0.8rem 0.8rem 0 #0000001a'};
   border-radius: ${({ $borderRadius }) => $borderRadius};
   align-items: center;
-  padding: 4px;
+  padding: 0.4rem;
   overflow: ${({ $menuOpen }) => ($menuOpen ? 'visible' : 'hidden')};
-  /* overflow: hidden; */
   transition: all 0.3s ease;
 `;
 
@@ -242,7 +242,7 @@ const StyledIcons = styled(Icons)`
 
 const CollapseButton = styled(Button)`
   align-self: flex-end;
-  gap: 4px;
+  gap: 0.4rem;
   width: 100%;
 `;
 
@@ -254,7 +254,7 @@ const TabContainer = styled.div`
 `;
 
 const ButtonText = styled.span`
-  margin-top: 3px;
+  margin-top: 0.3rem;
   width: auto;
   overflow: hidden;
 `;

@@ -26,8 +26,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   flex: 1;
-  /* padding-bottom: 20px; */
-  max-height: ${({ $maxHeight }) => `${$maxHeight}px`};
+  max-height: ${({ $maxHeight }) => `${$maxHeight / 10}rem`};
   opacity: 0;
   animation: 0.8s ${fadeInAndSlideUp} 0.8s ease forwards;
 
@@ -44,7 +43,7 @@ const Container = styled.div`
   }
 
   @media screen and (max-width: ${small}) {
-    max-height: 300px;
+    max-height: 30rem;
   }
 
   @media screen and (max-width: ${small}) {
@@ -58,16 +57,14 @@ const Container = styled.div`
 
 const StyledGallery = styled(Card)`
   flex: 1;
-  min-height: 250px;
+  min-height: 25rem;
   height: 100%;
   position: relative;
 
   .card.gallery {
-    /* flex: 1; */
     box-shadow: none;
     padding: 0;
     overflow: hidden;
-    /* max-height: 280px; */
     position: relative;
   }
 `;
@@ -84,7 +81,7 @@ const Image = styled.img`
   height: 100%;
   object-fit: cover;
   position: relative;
-  transition: transform 10s linear;
+  transition: transform 6s linear;
   filter: ${({ filter }) => filter};
 
   &.selected {
@@ -109,7 +106,7 @@ const images = [
 ];
 
 export default function Gallery() {
-  const [selected, setSelected] = useState(0);
+  const [selected, setSelected] = useState();
   const ref = useRef();
   const prevWidth = useRef(0);
   const initialRender = useRef(true);
@@ -117,6 +114,10 @@ export default function Gallery() {
   const maxHeight = Math.min(windowWidth * 0.21, 500);
   const selectedRef = useRef(0);
   const [isInViewport, setIsInViewport] = useState(true);
+
+  useEffect(() => {
+    setSelected(0);
+  }, []);
 
   const handleClick = (direction) => {
     setSelected((prev) => {

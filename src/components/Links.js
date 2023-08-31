@@ -17,7 +17,6 @@ const LinksContainer = styled.div`
   @media screen and (max-width: ${xsmall}) {
     display: flex;
     flex-direction: column;
-    align-items: center;
   }
 `;
 
@@ -34,11 +33,11 @@ const DownloadLink = styled.a`
 
 const DownloadLinkImage = styled.img`
   max-height: 4rem;
-  margin: 0 20px 20px 0;
+  margin: 0 2rem 2rem 0;
 
   @media screen and (max-width: ${xsmall}) {
     max-height: 4.8rem;
-    margin: 0 10px 10px 0;
+    margin: 0 1rem 1rem 0;
   }
 `;
 

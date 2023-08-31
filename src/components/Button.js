@@ -29,7 +29,7 @@ const StyledButton = styled.button`
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 1px ${({ focusBorderColor }) => focusBorderColor};
+    box-shadow: 0 0 0 0.1rem ${({ focusBorderColor }) => focusBorderColor};
   }
 
   @media screen and (max-width: ${smallBreakpoint}) {

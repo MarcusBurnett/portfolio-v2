@@ -17,32 +17,28 @@ const Item = styled.div.attrs((props) => ({
   transition: transform 0.2s ease;
   transform-origin: top right;
   max-width: 60rem;
-
-  /* @media screen and (max-width: ${large}) {
-    align-items: flex-start;
-  } */
 `;
 
 const Image = styled.img`
   width: 100%;
-  max-width: 500px;
+  max-width: 50rem;
   height: 18vw;
-  max-height: 300px;
+  max-height: 30rem;
   object-fit: cover;
   border-radius: ${({ $borderRadius }) => $borderRadius};
-  margin-right: -50px;
+  margin-right: -5rem;
   position: relative;
   transition: transform 0.5s ease;
   transform-origin: 80%;
-  transform: perspective(60px) rotateY(-0.01deg);
+  transform: perspective(6rem) rotateY(-0.01deg);
 
   &:hover {
-    transform: perspective(60px) rotateY(-0.8deg);
+    transform: perspective(6rem) rotateY(-0.8deg);
   }
 
   @media screen and (max-width: ${large}) {
     height: 40vh;
-    margin-right: -30px;
+    margin-right: -3rem;
   }
 
   @media screen and (max-width: ${small}) {
@@ -60,8 +56,8 @@ const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 10px;
-  padding: 20px;
+  gap: 1rem;
+  padding: 2rem;
   p,
   h3,
   h4 {
@@ -79,7 +75,7 @@ const ContentContainer = styled.div`
   }
 
   @media screen and (max-width: ${large}) {
-    padding-right: 40px;
+    padding-right: 4rem;
     h3 {
       font-size: 2.2rem;
     }
@@ -138,7 +134,6 @@ export default function TimelineItem({ item, index, $scrollY, setPosition }) {
       if (scale > 1) scale = 1;
       if (scale < 0) scale = 0;
 
-      // if (transform.scale !== scale.toFixed(3))
       setTransform({ scale: scale.toFixed(3) });
     }
   }, [height, $scrollY, setPosition, index, isMobile, transform.scale]);

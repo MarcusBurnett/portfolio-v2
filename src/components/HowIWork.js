@@ -11,9 +11,9 @@ import howIWork from '../data/howIWork';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 1.5rem;
   position: relative;
-  margin: 70px 0 20px 0;
+  margin: 7rem 0 2rem 0;
   opacity: 0;
   animation: 0.8s ${fadeInAndSlideLeft} 0.6s ease forwards;
 
@@ -29,12 +29,12 @@ const Container = styled.div`
 
 const Data = styled.div`
   display: flex;
-  gap: 20px;
+  gap: 2rem;
   position: relative;
   align-items: flex-end;
   overflow-x: auto;
   overscroll-behavior: auto;
-  padding: 0 30px 30px 30px;
+  padding: 0 3rem 3rem 3rem;
 
   /* Hide scrollbar for Chrome, Safari and Opera */
   &::-webkit-scrollbar {
@@ -47,7 +47,7 @@ const Data = styled.div`
 
 const Background = styled.div`
   background-color: ${({ $backgroundColor }) => $backgroundColor};
-  width: ${({ width }) => `${width}px`};
+  width: ${({ width }) => `${width / 10}rem`};
   min-width: 100%;
   position: absolute;
   left: 0;
@@ -65,10 +65,10 @@ const Background = styled.div`
 
 const Step = styled(Card)`
   .card {
-    width: 550px;
+    width: 55rem;
     max-width: 90vw;
     box-shadow: none;
-    gap: 5px;
+    gap: 0.5rem;
 
     @media screen and (max-width: ${small}) {
       padding: 2.5rem;
@@ -87,7 +87,7 @@ const StepTitle = styled.h5`
 `;
 
 const Content = styled.div`
-  padding-left: 15px;
+  padding-left: 1.5rem;
 
   @media screen and (max-width: ${small}) {
     padding-left: 0;
@@ -97,12 +97,12 @@ const Content = styled.div`
 
 const SectionHeader = styled.div`
   display: flex;
-  gap: 5px;
+  gap: 0.5rem;
   transform: rotate(-90deg);
   width: 2.2rem;
   height: 100%;
   cursor: pointer;
-  letter-spacing: 1px;
+  letter-spacing: 0.1rem;
 
   @media screen and (max-width: ${small}) {
     width: 2.5rem;
@@ -138,10 +138,11 @@ const Steps = styled.div`
 const Section = styled.div`
   display: flex;
   min-width: ${({ $collapsed, width }) =>
-    $collapsed ? '2.2rem' : `${width}px`};
-  width: ${({ $collapsed, width }) => ($collapsed ? '2.2rem' : `${width}px`)};
+    $collapsed ? '2.2rem' : `${width / 10}rem`};
+  width: ${({ $collapsed, width }) =>
+    $collapsed ? '2.2rem' : `${width / 10}rem`};
   transition: all 1s ease-in-out;
-  gap: 20px;
+  gap: 2rem;
   position: relative;
   align-items: flex-end;
   overflow: hidden;
@@ -152,7 +153,7 @@ const Title = styled.h3`
 
   @media screen and (max-width: ${small}) {
     font-size: 2.2rem;
-    margin-left: 20px;
+    margin-left: 2rem;
   }
 `;
 

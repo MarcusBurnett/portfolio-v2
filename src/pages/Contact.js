@@ -8,20 +8,20 @@ const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 40px;
-  gap: 20px;
+  padding: 4rem;
+  gap: 2rem;
   position: relative;
-  max-width: 850px;
+  max-width: 85rem;
   height: fit-content;
 
   @media screen and (max-width: ${medium}) {
     min-height: 100vh;
-    padding: 70px 20px 40px;
+    padding: 7rem 2rem 4rem;
   }
 
   @media screen and (max-width: ${small}) {
-    margin-bottom: 100px;
-    gap: 40px;
+    margin-bottom: 10rem;
+    gap: 4rem;
     padding-top: 12rem;
   }
 `;
@@ -29,7 +29,7 @@ const Container = styled.div`
 const TitleContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0.4rem;
   opacity: 0;
   animation: 0.6s ${fadeInAndSlideUp} 0.4s ease forwards;
 `;

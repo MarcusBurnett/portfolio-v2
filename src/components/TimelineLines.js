@@ -8,12 +8,11 @@ const Timeline = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 6px;
-  width: 20px;
+  gap: 0.6rem;
+  width: 2rem;
   height: 100%;
-  /* overflow: hidden; */
   position: absolute;
-  right: 20px;
+  right: 2rem;
   opacity: 0;
   animation: 0.8s ${fadeInAndSlideLeft} 1.6s ease forwards;
 
@@ -22,25 +21,20 @@ const Timeline = styled.div`
   }
 
   @media screen and (max-width: ${medium}) {
-    /* flex-direction: row;
-    width: 100%;
-    height: 20px;
-    bottom: 100px; */
-    right: 10px;
+    right: 1rem;
   }
 `;
 
 const StyledLine = styled.div`
-  width: ${({ width }) => `${width}px`};
-  min-height: 2px;
-  border-radius: 1px;
+  width: ${({ width }) => `${width / 10}rem`};
+  min-height: 0.2rem;
+  border-radius: 0.1rem;
   background-color: ${({ $backgroundColor }) => $backgroundColor};
   transition: width 0.3s ease;
 
   @media screen and (max-width: ${large}) {
-    /* height: ${({ width }) => `${width}px`}; */
     width: auto;
-    min-width: 2px;
+    min-width: 0.2rem;
   }
 `;
 
