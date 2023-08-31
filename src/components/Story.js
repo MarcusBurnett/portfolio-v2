@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components/macro';
+import { debounce } from 'lodash';
 import { useTheme } from '../context/theme';
 import timeline from '../data/timeline';
 import TimelineItem from './TimelineItem';
@@ -61,7 +62,7 @@ const Background = styled.div`
   width: 32vw;
   top: ${({ $scrollY }) => `${Math.max(-40, 125 - $scrollY / 2)}px`};
   right: 9rem;
-  bottom: 0;
+  bottom: -5rem;
   border-radius: ${({ $borderRadius }) => $borderRadius};
   border: ${({ border }) => border};
   z-index: -1;
@@ -146,9 +147,20 @@ export default function Story() {
     return () => resizeObserver.disconnect();
   }, []);
 
+  const updateScrollY = debounce(
+    (scrollTop) => {
+      setScrollY(scrollTop);
+    },
+    500,
+    {
+      leading: true,
+      trailing: false,
+    }
+  );
+
   const handleScroll = (e) => {
     if (isDesktop) {
-      setScrollY(e.target.scrollTop);
+      updateScrollY(e.target.scrollTop);
     }
   };
 
@@ -157,7 +169,7 @@ export default function Story() {
       <StyledStory onScroll={handleScroll}>
         <Background
           $borderRadius={theme.borderRadius.default}
-          $scrollY={scrollY}
+          $scrollY={isDesktop ? scrollY : undefined}
           $backgroundColor={theme.boxShadow}
           border={theme.border.background}
         />
@@ -167,7 +179,7 @@ export default function Story() {
             <TimelineItem
               item={item}
               key={item.title}
-              $scrollY={scrollY}
+              $scrollY={isDesktop ? scrollY : undefined}
               setPosition={setItemPositions}
               index={index}
             />

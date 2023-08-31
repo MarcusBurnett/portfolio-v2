@@ -352,9 +352,9 @@ const themes = {
     color: '#354656',
     storyColor: '#FFFFFF',
     selected: '#A0F5D1',
-    secondary: '#85EDC1',
+    secondary: '#96E4C4',
     boxShadow: '#354656',
-    contactIcons: '#85EDC1',
+    contactIcons: '#96E4C4',
     shadow: true,
     card: '#9FF3D0',
     border: {
@@ -376,14 +376,14 @@ const themes = {
     },
     button: {
       primary: {
-        backgroundColor: '#85EDC1',
+        backgroundColor: '#96E4C4',
         color: '#121212',
         hover: '#353739',
         focusBorder: '0.1rem solid #CD6B55',
         borderRadius: '1rem',
       },
       secondary: {
-        backgroundColor: '#85EDC1',
+        backgroundColor: '#96E4C4',
         color: '#354656',
         hover: '#A0F5D1',
         focusBorder: '0.1rem solid #354656',

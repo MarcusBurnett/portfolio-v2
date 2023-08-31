@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { memo, useEffect, useRef, useState } from 'react';
 import { styled } from 'styled-components';
 import { useWindowDimensions } from '../hooks';
 import { large, small } from '../styles/breakpoints';
@@ -90,7 +90,7 @@ const ContentContainer = styled.div`
   }
 `;
 
-export default function TimelineItem({ item, index, $scrollY, setPosition }) {
+function TimelineItem({ item, index, $scrollY, setPosition }) {
   const ref = useRef();
   const { height, width } = useWindowDimensions();
   const [transform, setTransform] = useState({ scale: 1 });
@@ -176,3 +176,5 @@ export default function TimelineItem({ item, index, $scrollY, setPosition }) {
     </Item>
   );
 }
+
+export default memo(TimelineItem);

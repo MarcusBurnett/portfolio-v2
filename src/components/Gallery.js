@@ -152,7 +152,7 @@ export default function Gallery() {
     const section = document.querySelector(`.image-${selected}`);
 
     if (!initialRender.current) {
-      section.scrollIntoView({
+      section?.scrollIntoView({
         behavior: 'smooth',
         block: 'nearest',
       });
@@ -168,7 +168,7 @@ export default function Gallery() {
           width !== prevWidth.current
         ) {
           prevWidth.current = width;
-          section.scrollIntoView({
+          section?.scrollIntoView({
             behavior: 'smooth',
             block: 'nearest',
             inline: 'nearest',

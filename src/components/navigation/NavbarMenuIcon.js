@@ -12,7 +12,7 @@ const Menu = styled.div`
   display: ${({ collapsible }) => (collapsible ? 'flex' : 'none')};
   flex-direction: column;
   justify-content: center;
-  gap: 0.4rem;
+  gap: 0.5rem;
   align-items: center;
   transition: all 0.3s ease;
   cursor: pointer;
