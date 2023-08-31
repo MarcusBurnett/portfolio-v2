@@ -13,6 +13,7 @@ import Textarea from '../components/Textarea';
 import { useTheme } from '../context/theme';
 import { medium, small } from '../styles/breakpoints';
 import { fadeInAndSlideUp } from '../keyframes';
+import { useWindowDimensions } from '../hooks';
 
 const Container = styled.div`
   display: flex;
@@ -84,6 +85,8 @@ function ContactForm() {
   const recaptchaRef = useRef();
   const { state } = useLocation();
   const { theme } = useTheme();
+  const { width } = useWindowDimensions();
+  const isMobile = width <= Number.parseInt(small.replace('px', ''), 10);
 
   const sendEmail = async (values, { resetForm }) => {
     try {
@@ -163,6 +166,7 @@ function ContactForm() {
           onBlur={handleBlur('email')}
           error={touched.email && errors.email}
           valid={values.email && !errors.email}
+          labelColor={isMobile && theme.key === 'mint' && theme.backgroundColor}
         />
       </InputContainer>
       <Textarea

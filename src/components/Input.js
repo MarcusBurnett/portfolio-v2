@@ -67,7 +67,7 @@ const Error = styled.span`
   font-weight: 700;
 `;
 
-function Input({ name, label, onChange, value, error, valid }) {
+function Input({ name, label, onChange, value, error, valid, labelColor }) {
   const { theme } = useTheme();
 
   return (
@@ -75,7 +75,7 @@ function Input({ name, label, onChange, value, error, valid }) {
       <LabelContainer $backgroundColor={theme.backgroundColor}>
         <Label
           error={error}
-          color={theme.input?.label}
+          color={labelColor || theme.input?.label}
           className={label}
           htmlFor={name}
         >
