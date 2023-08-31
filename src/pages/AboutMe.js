@@ -48,7 +48,7 @@ const Left = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 2.5rem;
+  font-size: 2.4rem;
   font-weight: 700;
 
   @media screen and (max-width: ${small}) {
@@ -61,9 +61,11 @@ const Subtitle = styled.h2`
   font-weight: 400;
   display: flex;
   flex-wrap: wrap;
+  gap: 0.8rem;
 
   @media screen and (max-width: ${small}) {
     font-size: 2.8rem;
+    gap: 0;
     flex-direction: column;
   }
 `;
@@ -76,7 +78,7 @@ const DetailsItem = styled.div`
   position: relative;
 
   @media screen and (max-width: ${xsmall}) {
-    margin: 0.5rem 0;
+    margin: 0.4rem 0;
   }
 `;
 

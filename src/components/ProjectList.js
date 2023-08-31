@@ -20,7 +20,7 @@ const StyledProjectList = styled.div`
 
 const Container = styled.div`
   display: flex;
-  gap: 1rem;
+  gap: 0.8rem;
   max-width: 100rem;
   padding: 0 2rem 4rem 3rem;
   position: relative;
@@ -43,7 +43,7 @@ const Container = styled.div`
 
 const Project = styled.img`
   border-radius: ${({ $borderRadius }) => $borderRadius};
-  transform: ${({ selected }) => selected && 'scale(1.1) translateY(0.5rem)'};
+  transform: ${({ selected }) => selected && 'scale(1.1) translateY(0.4rem)'};
   transition: all 0.4s ease;
   width: 80%;
   min-width: 7rem;
@@ -53,7 +53,7 @@ const Project = styled.img`
 
   &:hover {
     transform: ${({ selected }) =>
-      selected ? 'scale(1.1) translateY(0.5rem)' : 'scale(1.08)'};
+      selected ? 'scale(1.1) translateY(0.4rem)' : 'scale(1.08)'};
   }
 
   @media screen and (max-width: ${small}) {
@@ -63,7 +63,7 @@ const Project = styled.img`
 
 const Indicator = styled.div`
   width: 4rem;
-  height: 0.5rem;
+  height: 0.4rem;
   border-radius: ${({ $borderRadius }) => $borderRadius};
   background-color: ${({ $backgroundColor }) => $backgroundColor};
   opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};

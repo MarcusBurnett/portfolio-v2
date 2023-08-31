@@ -35,7 +35,7 @@ const TitleContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 2.5rem;
+  font-size: 2.4rem;
   font-weight: 700;
 
   @media screen and (max-width: ${small}) {

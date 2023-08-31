@@ -23,7 +23,7 @@ const Letter = styled(Text)`
 `;
 
 const DurationUnit = styled(Text)`
-  margin-right: 0.5rem;
+  margin-right: 0.4rem;
 
   :last-child {
     margin-right: 0;

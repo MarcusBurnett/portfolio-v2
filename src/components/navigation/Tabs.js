@@ -13,7 +13,7 @@ const StyledTabs = styled.ul`
   width: ${({ $collapsed }) =>
     $collapsed ? 'calc(100% + 1rem)' : 'calc(100% + 5rem)'};
   margin-left: ${({ $collapsed }) => ($collapsed ? '-2rem' : '-5rem')};
-  gap: 0.5rem;
+  gap: 0.4rem;
   display: flex;
   flex-direction: column;
   background-color: ${({ $backgroundColor }) => $backgroundColor};
@@ -56,7 +56,7 @@ const Indicator = styled.div`
 
   @media screen and (max-width: ${small}) {
     width: 100%;
-    height: ${({ selected }) => (selected ? '0.5rem' : '0')};
+    height: ${({ selected }) => (selected ? '0.4rem' : '0')};
     top: auto;
     right: 0;
   }
@@ -65,13 +65,13 @@ const Indicator = styled.div`
 const Tab = styled.li`
   display: flex;
   transform: ${({ selected, $collapsed }) =>
-    selected ? `translate(${$collapsed ? '0.5rem' : '1rem'})` : 'translate(0)'};
+    selected ? `translate(${$collapsed ? '0.4rem' : '1rem'})` : 'translate(0)'};
   transition: all 0.4s ease;
   margin-right: 0.1rem;
   width: ${({ selected, $collapsed }) =>
     (selected && $collapsed && '140%') || (selected && '105%') || '100%'};
   margin-left: ${({ selected, $collapsed }) =>
-    !selected && $collapsed && '-0.5rem'};
+    !selected && $collapsed && '-0.4rem'};
 
   @media screen and (max-width: ${small}) {
     width: 100%;
@@ -150,9 +150,9 @@ const StyledCard = styled(Card)`
       transition: opacity 0.1s ease;
 
       &::before {
-        border-top: 0.5rem solid transparent;
-        border-bottom: 0.5rem solid transparent;
-        border-right: 0.5rem solid
+        border-top: 0.4rem solid transparent;
+        border-bottom: 0.4rem solid transparent;
+        border-right: 0.4rem solid
           ${({ tooltipBackgroundColor }) => tooltipBackgroundColor};
         left: -0.8rem;
         top: auto;

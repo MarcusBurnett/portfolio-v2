@@ -31,7 +31,7 @@ const StyledStory = styled.div`
 const Container = styled.div`
   flex: 1;
   display: flex;
-  gap: 1rem;
+  gap: 0.8rem;
   width: 40vw;
   height: 100vh;
   overflow: auto;

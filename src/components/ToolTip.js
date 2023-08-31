@@ -11,6 +11,7 @@ const StyledTooltip = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 10;
+  pointer-events: none;
 
   &::before {
     content: '';

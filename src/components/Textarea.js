@@ -45,7 +45,7 @@ const TextareaContainer = styled.div`
 `;
 
 const LabelContainer = styled.div`
-  padding-right: 0.5rem;
+  padding-right: 0.4rem;
   font-size: 1.3rem;
   border-radius: 0.3rem 0.3rem 0.3rem 0;
   transition: background-color 0.4s ease;

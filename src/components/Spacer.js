@@ -1,11 +1,11 @@
 import styled from 'styled-components/macro';
 
 const sizes = {
-  xs: '0.5rem',
+  xs: '0.4rem',
   s: '1rem',
-  m: '1.5rem',
+  m: '1.6rem',
   l: '2rem',
-  xl: '2.5rem',
+  xl: '2.4rem',
   xxl: '3rem',
   xxxl: '4rem',
 };

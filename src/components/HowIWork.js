@@ -11,7 +11,7 @@ import howIWork from '../data/howIWork';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.6rem;
   position: relative;
   margin: 7rem 0 2rem 0;
   opacity: 0;
@@ -68,10 +68,10 @@ const Step = styled(Card)`
     width: 55rem;
     max-width: 90vw;
     box-shadow: none;
-    gap: 0.5rem;
+    gap: 0.4rem;
 
     @media screen and (max-width: ${small}) {
-      padding: 2.5rem;
+      padding: 2.4rem;
     }
   }
 `;
@@ -87,7 +87,7 @@ const StepTitle = styled.h5`
 `;
 
 const Content = styled.div`
-  padding-left: 1.5rem;
+  padding-left: 1.6rem;
 
   @media screen and (max-width: ${small}) {
     padding-left: 0;
@@ -97,7 +97,7 @@ const Content = styled.div`
 
 const SectionHeader = styled.div`
   display: flex;
-  gap: 0.5rem;
+  gap: 0.4rem;
   transform: rotate(-90deg);
   width: 2.2rem;
   height: 100%;
@@ -105,7 +105,7 @@ const SectionHeader = styled.div`
   letter-spacing: 0.1rem;
 
   @media screen and (max-width: ${small}) {
-    width: 2.5rem;
+    width: 2.4rem;
   }
 
   &:hover {

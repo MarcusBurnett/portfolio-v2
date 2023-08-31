@@ -10,7 +10,7 @@ const StyledButton = styled.button`
   position: relative;
   min-height: ${({ small }) => (small ? '3rem' : '4.4rem')};
   width: ${({ small }) => (small ? 'auto' : '100%')};
-  padding: 0 2.5rem;
+  padding: 0 2.4rem;
   border-radius: ${({ $borderRadius }) => $borderRadius};
   transition: all 0.3s ease;
   cursor: pointer;

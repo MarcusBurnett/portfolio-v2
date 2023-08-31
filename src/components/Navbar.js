@@ -13,7 +13,7 @@ import { fadeInAndSlideRight } from '../keyframes';
 
 const StyledNavbar = styled.nav`
   padding: ${({ $collapsed }) =>
-    $collapsed ? '1rem 1rem 3rem 2.5rem' : '1rem 1rem 3rem 4.5rem'};
+    $collapsed ? '1rem 1rem 3rem 2.4rem' : '1rem 1rem 3rem 4.5rem'};
   width: 25%;
   min-width: ${({ $collapsed }) => ($collapsed ? '10rem' : '26rem')};
   max-width: ${({ $collapsed }) => ($collapsed ? '10rem' : '30rem')};
@@ -157,7 +157,7 @@ const StyledHeader = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: ${({ $collapsed }) => ($collapsed ? '1rem' : '1.5rem')};
+  gap: ${({ $collapsed }) => ($collapsed ? '1rem' : '1.6rem')};
   transition: all 0.4s ease;
   z-index: 11;
 
@@ -203,7 +203,8 @@ const CollapsedMenu = styled.div`
   border-radius: ${({ $borderRadius }) => $borderRadius};
   align-items: center;
   padding: 0.4rem;
-  overflow: ${({ $menuOpen }) => ($menuOpen ? 'visible' : 'hidden')};
+  overflow: ${({ $collapsed, $menuOpen }) =>
+    ($collapsed && !$menuOpen && 'hidden') || 'visible'};
   transition: all 0.3s ease;
 `;
 

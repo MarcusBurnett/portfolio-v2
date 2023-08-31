@@ -12,7 +12,7 @@ const Item = styled.div.attrs((props) => ({
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 1rem;
+  gap: 0.8rem;
   transform: ${({ scale }) => `(${scale})`};
   transition: transform 0.2s ease;
   transform-origin: top right;
@@ -56,7 +56,7 @@ const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 1rem;
+  gap: 0.8rem;
   padding: 2rem;
   p,
   h3,

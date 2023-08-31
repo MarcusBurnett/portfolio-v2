@@ -37,7 +37,7 @@ h1, h2 {
 }
 
 h3 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
 }
 
 p, span {

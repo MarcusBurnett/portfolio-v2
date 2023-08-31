@@ -44,7 +44,7 @@ const InputContainer = styled.div`
 `;
 
 const LabelContainer = styled.div`
-  padding-right: 0.5rem;
+  padding-right: 0.4rem;
   margin-left: -0.1rem;
   font-size: 1.3rem;
   border-radius: 0.3rem 0.3rem 0.3rem 0;
