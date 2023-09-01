@@ -26,12 +26,12 @@ import tdsImage from '../images/TDS/Image.png';
 import tdsLogoPurple from '../images/TDS/Logo/Purple.png';
 import tdsLogoWhite from '../images/TDS/Logo/White.png';
 import Figma from '../images/Tools/Figma.svg';
-import Dovetail from '../images/Tools/Dovetail.png';
-import Maze from '../images/Tools/Maze.avif';
+import Dovetail from '../images/Tools/Dovetail.svg';
+import Maze from '../images/Tools/Maze.svg';
 import React from '../images/Tools/React.svg';
 import ReactNative from '../images/Tools/ReactNative.svg';
-import Mixpanel from '../images/Tools/Mixpanel.png';
-import Hotjar from '../images/Tools/Hotjar.png';
+import Mixpanel from '../images/Tools/Mixpanel.svg';
+import Hotjar from '../images/Tools/Hotjar.svg';
 import Firebase from '../images/Tools/Firebase.svg';
 import VueJS from '../images/Tools/VueJS.svg';
 import XD from '../images/Tools/XD.svg';
@@ -225,7 +225,7 @@ export default [
       },
     ],
     tile: airtimeRewardsTile,
-    bullets: ['Joined in May 2019', 'Manchester, UK'],
+    bullets: ['May 2019 - Aug 2021', 'Manchester, UK'],
     description:
       'The main focus of my time at Airtime Rewards was our app, built using React Native. In 2020 we re-built it from scratch, allowing us to work with the latest features and packages for the framework. I also played a significant role in the deisgn process, implementing a cloud-based design system and branching to streamline the process.',
     colors: {

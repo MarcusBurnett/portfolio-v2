@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>
+			https://marcus-burnett-portfolio.web.app
+    </loc>
+    <priority>1.0</priority>
+  </url>
+	<url>
+    <loc>
+			https://marcus-burnett-portfolio.web.app/about-me
+    </loc>
+    <priority>0.8</priority>
+  </url>
+	<url>
+    <loc>
+			https://marcus-burnett-portfolio.web.app/experience
+    </loc>
+  </url>
+	<url>
+    <loc>
+			https://marcus-burnett-portfolio.web.app/theme
+    </loc>
+  </url>
+	<url>
+    <loc>
+			https://marcus-burnett-portfolio.web.app/contact
+    </loc>
+  </url>
+	<url>
+    <loc>
+			https://marcus-burnett-portfolio.web.app/static/media/CV.5557b27992c1815c6223.pdf
+    </loc>
+  </url>
+</urlset>

@@ -226,7 +226,7 @@ export default function Project({ project, transition }) {
     <StyledProject>
       <Container className={`${transition || ''}`}>
         <Section>
-          <Logo src={project.logos[theme.key]} />
+          <Logo src={project.logos[theme.key]} alt={`${project.name} logo`} />
           <List>
             {project.bullets?.map((bullet) => (
               <li key={bullet}>{bullet}</li>
@@ -241,6 +241,7 @@ export default function Project({ project, transition }) {
                 <ToolImage
                   src={tool.img}
                   $borderRadius={theme.borderRadius.tab}
+                  alt={tool.name}
                 />
                 <Tooltip className="tooltip">{tool.name}</Tooltip>
               </Tool>
@@ -257,6 +258,7 @@ export default function Project({ project, transition }) {
             $loaded={loaded}
             src={project.image}
             onLoad={() => setLoaded(true)}
+            alt={`${project.name} graphic`}
           />
         </Section>
       </Container>

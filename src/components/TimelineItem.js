@@ -65,22 +65,22 @@ const ContentContainer = styled.div`
     color: ${({ color }) => color};
   }
 
-  h3 {
+  h4 {
     font-size: 1.8rem;
   }
 
-  h4 {
+  h3 {
     font-size: 1.6rem;
     font-weight: 300;
   }
 
   @media screen and (max-width: ${large}) {
     padding-right: 4rem;
-    h3 {
+    h4 {
       font-size: 2.2rem;
     }
 
-    h3 {
+    h4 {
       font-size: 2rem;
     }
 
@@ -151,8 +151,8 @@ function TimelineItem({ item, index, $scrollY, setPosition }) {
         $borderRadius={theme.borderRadius.default}
       />
       <ContentContainer color={theme.storyColor}>
-        <h4>{item.year}</h4>
-        <h3>{item.title}</h3>
+        <h3>{item.year}</h3>
+        <h4>{item.title}</h4>
         <p>{item.content}</p>
       </ContentContainer>
     </Item>
@@ -169,8 +169,8 @@ function TimelineItem({ item, index, $scrollY, setPosition }) {
         $borderRadius={theme.borderRadius.default}
       />
       <ContentContainer color={theme.storyColor}>
-        <h4>{item.year}</h4>
-        <h3>{item.title}</h3>
+        <h3>{item.year}</h3>
+        <h4>{item.title}</h4>
         <p>{item.content}</p>
       </ContentContainer>
     </Item>

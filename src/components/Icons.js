@@ -83,24 +83,28 @@ function Icons({ className }) {
       url: CV,
       icon: theme.icons?.selected?.downloadCVIcon,
       name: 'Download CV',
+      alt: 'Download my CV',
       target: '_blank',
     },
     {
       url: 'mailto:m.burnett8@outlook.com',
       icon: theme.icons?.selected?.emailIcon,
       name: 'Email',
+      alt: 'Contact by email',
       onClick: () => copy('m.burnett8@outlook.com'),
     },
     {
       url: 'tel: +31619714087',
       icon: theme.icons?.selected?.phoneIcon,
       name: 'Phone',
+      alt: 'Contact by phone',
       onClick: () => copy('+31619714087'),
     },
     {
       url: 'https://www.linkedin.com/in/marcus-burnett/',
       icon: theme.icons?.selected?.linkedInIcon,
       name: 'LinkedIn',
+      alt: 'Go to my LinkedIn',
       target: '_blank',
     },
   ];

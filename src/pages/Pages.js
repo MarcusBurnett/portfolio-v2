@@ -60,7 +60,7 @@ function Pages() {
   const location = useLocation();
 
   return (
-    <StyledContent>
+    <StyledContent role="main">
       <TransitionGroup component={null}>
         <CSSTransition key={location.key} classNames="page" timeout={500}>
           <Routes location={location}>

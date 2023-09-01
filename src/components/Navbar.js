@@ -297,6 +297,7 @@ function Header({ collapsed }) {
           collapsed ? theme.borderRadius.small : theme.borderRadius.medium
         }
         filter={theme.imageFilter}
+        alt="profile picture"
       />
       <HeaderContent $collapsed={collapsed}>
         <HeaderTextContainer $collapsed={collapsed}>
@@ -363,12 +364,13 @@ export default function Navbar() {
     <StyledNavbar
       $scrollPosition={scrollPosition}
       $backgroundColor={theme.backgroundColor}
+      role="navigation"
     >
       <Header />
       <Tabs />
     </StyledNavbar>
   ) : (
-    <StyledNavbar ref={ref} $collapsed={collapsed}>
+    <StyledNavbar ref={ref} $collapsed={collapsed} role="navigation">
       <StyledCard
         $boxShadow={theme.boxShadow}
         $collapsed={collapsed}

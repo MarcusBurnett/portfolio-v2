@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components/macro';
 import Card from './Card';
-import Friends from '../images/Gallery/Friends.png';
+import Friends from '../images/Gallery/Friends.jpg';
 import Boat from '../images/Gallery/Boat.jpg';
 import Bernabeu from '../images/Gallery/Bernabeu.jpg';
 import Chess from '../images/Gallery/Chess.jpg';
 import Football from '../images/Gallery/Football.jpg';
 import Skydive from '../images/Gallery/Skydive.jpg';
-import Working from '../images/Gallery/Working.jpeg';
+import Working from '../images/Gallery/Working.jpg';
 import Jake from '../images/Gallery/Jake.jpg';
 import LazerQuest from '../images/Gallery/LazerQuest.jpg';
 import Pompei from '../images/Gallery/Pompei.jpg';
@@ -72,12 +72,14 @@ const StyledGallery = styled(Card)`
 const Images = styled.div`
   display: flex;
   min-width: 100%;
+  width: 100%;
   height: 100%;
   position: relative;
 `;
 
 const Image = styled.img`
   min-width: 100%;
+  width: 100%;
   height: 100%;
   object-fit: cover;
   position: relative;
